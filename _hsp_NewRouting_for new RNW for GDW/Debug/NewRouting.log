@@ -1,0 +1,46 @@
+﻿  AVPM.cpp
+  FVMunit.cpp
+  HighSlopeRunoff.cpp
+  Savestatus.cpp
+  WaterBelowChannel.cpp
+  WaterInChannel.cpp
+  WaterInRockSnow.cpp
+  CoorTrans.cpp
+  CpuUsageCount.cpp
+  functions.cpp
+  yuliang.cpp
+  YuLiangChBG.cpp
+  CommenProcess.cpp
+  MasterProcess.cpp
+  SlaveProcess.cpp
+  Change your target platform to Windows 7 or below if your application requires backward compatibility for the ADO interface.
+  TransferProcess.cpp
+  YuLiangCMORPH.cpp
+  正在生成代码...
+  DataStruct.cpp
+  main.cpp
+  TreeList.cpp
+  正在生成代码...
+AVPM.obj : warning LNK4075: 忽略“/EDITANDCONTINUE”(由于“/OPT:LBR”规范)
+CommenProcess.obj : error LNK2019: 无法解析的外部符号 _MPI_Get_processor_name，该符号在函数 "public: void __thiscall CommenProcess::ProcessInitialize(int,int,class ATL::CStringT<char,class ATL::StrTraitATL<char,class ATL::ChTraitsCRT<char> > >,class ATL::CStringT<char,class ATL::StrTraitATL<char,class ATL::ChTraitsCRT<char> > >,class ATL::CStringT<char,class ATL::StrTraitATL<char,class ATL::ChTraitsCRT<char> > >)" (?ProcessInitialize@CommenProcess@@QAEXHHV?$CStringT@DV?$StrTraitATL@DV?$ChTraitsCRT@D@ATL@@@ATL@@@ATL@@00@Z) 中被引用
+CommenProcess.obj : error LNK2019: 无法解析的外部符号 _MPI_Finalize，该符号在函数 __catch$?ReadHydroUsePara@CommenProcess@@QAEXXZ$0 中被引用
+main.obj : error LNK2001: 无法解析的外部符号 _MPI_Finalize
+MasterProcess.obj : error LNK2001: 无法解析的外部符号 _MPI_Finalize
+SlaveProcess.obj : error LNK2001: 无法解析的外部符号 _MPI_Finalize
+main.obj : error LNK2019: 无法解析的外部符号 _MPI_Comm_size，该符号在函数 _main 中被引用
+main.obj : error LNK2019: 无法解析的外部符号 _MPI_Comm_rank，该符号在函数 _main 中被引用
+main.obj : error LNK2019: 无法解析的外部符号 _MPI_Init，该符号在函数 _main 中被引用
+MasterProcess.obj : error LNK2019: 无法解析的外部符号 _MPI_Send，该符号在函数 "public: void __thiscall MasterProcess::DispatchTask(void)" (?DispatchTask@MasterProcess@@QAEXXZ) 中被引用
+SlaveProcess.obj : error LNK2001: 无法解析的外部符号 _MPI_Send
+TransferProcess.obj : error LNK2001: 无法解析的外部符号 _MPI_Send
+MasterProcess.obj : error LNK2019: 无法解析的外部符号 _MPI_Recv，该符号在函数 "public: void __thiscall MasterProcess::RecvSlaveProcess(void)" (?RecvSlaveProcess@MasterProcess@@QAEXXZ) 中被引用
+SlaveProcess.obj : error LNK2001: 无法解析的外部符号 _MPI_Recv
+TransferProcess.obj : error LNK2001: 无法解析的外部符号 _MPI_Recv
+SlaveProcess.obj : error LNK2019: 无法解析的外部符号 _MPI_Type_struct，该符号在函数 "private: void __thiscall SlaveProcess::NoChild(struct BSCode)" (?NoChild@SlaveProcess@@AAEXUBSCode@@@Z) 中被引用
+SlaveProcess.obj : error LNK2019: 无法解析的外部符号 _MPI_Address，该符号在函数 "private: void __thiscall SlaveProcess::NoChild(struct BSCode)" (?NoChild@SlaveProcess@@AAEXUBSCode@@@Z) 中被引用
+SlaveProcess.obj : error LNK2019: 无法解析的外部符号 _MPI_Type_commit，该符号在函数 "private: void __thiscall SlaveProcess::NoChild(struct BSCode)" (?NoChild@SlaveProcess@@AAEXUBSCode@@@Z) 中被引用
+SlaveProcess.obj : error LNK2019: 无法解析的外部符号 _MPI_Pack，该符号在函数 "private: void __thiscall SlaveProcess::NoChild(struct BSCode)" (?NoChild@SlaveProcess@@AAEXUBSCode@@@Z) 中被引用
+SlaveProcess.obj : error LNK2019: 无法解析的外部符号 _MPI_Wtime，该符号在函数 "public: void __thiscall SlaveProcess::RecvMasterProcess(void)" (?RecvMasterProcess@SlaveProcess@@QAEXXZ) 中被引用
+TransferProcess.obj : error LNK2019: 无法解析的外部符号 _MPI_Iprobe，该符号在函数 "public: void __thiscall TransferProcess::TransferMain(void)" (?TransferMain@TransferProcess@@QAEXXZ) 中被引用
+TransferProcess.obj : error LNK2019: 无法解析的外部符号 _MPI_Unpack，该符号在函数 "public: void __thiscall TransferProcess::TransferMain(void)" (?TransferMain@TransferProcess@@QAEXXZ) 中被引用
+.\Debug\NewRouting.exe : fatal error LNK1120: 14 个无法解析的外部命令

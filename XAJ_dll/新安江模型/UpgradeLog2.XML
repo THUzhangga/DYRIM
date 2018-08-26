@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?><?xml-stylesheet type='text/xsl' href='_UpgradeReport_Files/UpgradeReport.xslt'?><UpgradeLog>
+<Properties><Property Name="Solution" Value="新安江模型">
+</Property><Property Name="解决方案文件" Value="E:\SHY\XAJ_dll\新安江模型\新安江模型.sln">
+</Property><Property Name="Date" Value="2013年6月25日">
+</Property><Property Name="Time" Value="18:39">
+</Property><Property Name="日志号" Value="2">
+</Property></Properties><Event ErrorLevel="0" Project="新安江模型" Source="新安江模型\新安江模型.vcproj" Description="Converting project file 'E:\SHY\XAJ_dll\新安江模型\新安江模型\新安江模型.vcproj'.">
+</Event><Event ErrorLevel="1" Project="新安江模型" Source="新安江模型\新安江模型.vcproj" Description="VCWebServiceProxyGeneratorTool is no longer supported. The tool has been removed from your project settings.">
+</Event><Event ErrorLevel="1" Project="新安江模型" Source="新安江模型\新安江模型.vcproj" Description="Attribute 'Detect64BitPortabilityProblems' of 'VCCLCompilerTool' is not supported in this version and has been removed during conversion.">
+</Event><Event ErrorLevel="1" Project="新安江模型" Source="新安江模型\新安江模型.vcproj" Description="Attribute 'Detect64BitPortabilityProblems' of 'VCCLCompilerTool' is not supported in this version and has been removed during conversion.">
+</Event><Event ErrorLevel="1" Project="新安江模型" Source="新安江模型\新安江模型.vcproj" Description="MSB8012: $(TargetPath) ('E:\SHY\XAJ_dll\新安江模型\新安江模型\Debug\新安江模型.dll') does not match the Linker's OutputFile property value 'Debug\新安江模型.dll' ('E:\SHY\XAJ_dll\新安江模型\Debug\新安江模型.dll') in project configuration 'Debug|Win32'. This may cause your project to build incorrectly. To correct this, please make sure that $(TargetPath) property value matches the value specified in %(Link.OutputFile).">
+</Event><Event ErrorLevel="1" Project="新安江模型" Source="新安江模型\新安江模型.vcproj" Description="MSB8012: $(TargetPath) ('E:\SHY\XAJ_dll\新安江模型\新安江模型\Release\新安江模型.dll') does not match the Linker's OutputFile property value 'Release\新安江模型.dll' ('E:\SHY\XAJ_dll\新安江模型\Release\新安江模型.dll') in project configuration 'Release|Win32'. This may cause your project to build incorrectly. To correct this, please make sure that $(TargetPath) property value matches the value specified in %(Link.OutputFile).">
+</Event><Event ErrorLevel="0" Project="新安江模型" Source="新安江模型\新安江模型.vcproj" Description="Done converting to new project file 'E:\SHY\XAJ_dll\新安江模型\新安江模型\新安江模型.vcxproj'.">
+</Event><Event ErrorLevel="3" Project="新安江模型" Source="新安江模型\新安江模型.vcproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="新安江模型PS" Source="新安江模型\新安江模型PS.vcproj" Description="Converting project file 'E:\SHY\XAJ_dll\新安江模型\新安江模型\新安江模型PS.vcproj'.">
+</Event><Event ErrorLevel="1" Project="新安江模型PS" Source="新安江模型\新安江模型PS.vcproj" Description="VCWebServiceProxyGeneratorTool is no longer supported. The tool has been removed from your project settings.">
+</Event><Event ErrorLevel="1" Project="新安江模型PS" Source="新安江模型\新安江模型PS.vcproj" Description="MSB8012: $(TargetPath) ('E:\SHY\XAJ_dll\新安江模型\新安江模型\DebugPS\新安江模型PS.dll') does not match the Linker's OutputFile property value 'DebugPS\新安江模型PS.dll' ('E:\SHY\XAJ_dll\新安江模型\DebugPS\新安江模型PS.dll') in project configuration 'Debug|Win32'. This may cause your project to build incorrectly. To correct this, please make sure that $(TargetPath) property value matches the value specified in %(Link.OutputFile).">
+</Event><Event ErrorLevel="1" Project="新安江模型PS" Source="新安江模型\新安江模型PS.vcproj" Description="MSB8012: $(TargetPath) ('E:\SHY\XAJ_dll\新安江模型\新安江模型\ReleasePS\新安江模型PS.dll') does not match the Linker's OutputFile property value 'ReleasePS\新安江模型PS.dll' ('E:\SHY\XAJ_dll\新安江模型\ReleasePS\新安江模型PS.dll') in project configuration 'Release|Win32'. This may cause your project to build incorrectly. To correct this, please make sure that $(TargetPath) property value matches the value specified in %(Link.OutputFile).">
+</Event><Event ErrorLevel="0" Project="新安江模型PS" Source="新安江模型\新安江模型PS.vcproj" Description="Done converting to new project file 'E:\SHY\XAJ_dll\新安江模型\新安江模型\新安江模型PS.vcxproj'.">
+</Event><Event ErrorLevel="3" Project="新安江模型PS" Source="新安江模型\新安江模型PS.vcproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="" Source="新安江模型.sln" Description="成功转换解决方案">
+</Event><Event ErrorLevel="3" Project="" Source="新安江模型.sln" Description="Converted">
+</Event></UpgradeLog>

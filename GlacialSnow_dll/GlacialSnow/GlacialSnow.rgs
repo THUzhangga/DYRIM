@@ -1,0 +1,11 @@
+HKCR
+{
+	NoRemove AppID
+	{
+		'%APPID%' = s 'GlacialSnow'
+		'GlacialSnow.DLL'
+		{
+			val AppID = s '%APPID%'
+		}
+	}
+}

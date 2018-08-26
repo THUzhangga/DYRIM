@@ -1,0 +1,43 @@
+// WaterYield.idl : WaterYield 的 IDL 源
+
+// 此文件将由 MIDL 工具处理以
+// 产生类型库(WaterYield.tlb)和封送处理代码。
+#pragma once
+import "oaidl.idl";
+import "ocidl.idl";
+import "InterfaceStruct.idl";//王皓，不引用该行就不识别BSCode等结构体
+import "msado15.idl";//要引用此 
+
+[
+	object,
+	uuid(F7013BFF-2387-43C7-85EB-A6F2DB04B309),
+	oleautomation,
+	nonextensible,
+	helpstring("IWaterBasin 接口"),
+	pointer_default(unique)
+]
+interface IWaterBasin : IUnknown{
+	[id(1), helpstring("方法OpenMDBCnn")] HRESULT Initialize([in] BSTR name,[in] long rank, [in] BSTR SRM, [in] long StatusTime,[in]/* _Connection** pCnn*/[in]BSTR user,[in]BSTR password,[in]BSTR sid,[in]long steps,[in]long HourStart,[in]long NumofHours, [in]VARIANT_BOOL isDebug,[in] BSTR sccd,[in] BSTR sRainType,[in] float UpInitWaterContent, [in] float MidInitWaterContent, [in] float DownInitWaterContent,[in] BSTR emethod, [in] float thetab, [in] float thetaw, [in] int N, [in] float E0_a,[in] BSTR SoilErosionEquation);
+	[id(2), helpstring("方法calc")] HRESULT calc([in] BSTR SnowModelType,[in] struct BSCode mBSCode, [in] struct Para mPara,[in]FLOAT* pQin, [in]FLOAT* pSin, [in]FLOAT* pWLM, [in]FLOAT* pWRM);
+	[id(3), helpstring("方法Finalize")] HRESULT Finalize([in] BSTR SRM );
+};
+[
+	uuid(C07C6D9B-9582-4A66-9E75-B7D8FA27AD4C),
+	version(1.0),
+	helpstring("WaterYield 1.0 类型库")
+]
+library WaterYieldLib
+{  
+	importlib("stdole32.tlb");   
+	importlib("c:\program files\common files\system\ado\msado15.dll"); 
+
+	importlib("stdole2.tlb");
+	[
+		uuid(7F623663-C6B7-43E3-A6A2-765C3EAEBD00),
+		helpstring("WaterBasin Class")
+	]
+	coclass WaterBasin
+	{
+		[default] interface IWaterBasin;
+	};
+};

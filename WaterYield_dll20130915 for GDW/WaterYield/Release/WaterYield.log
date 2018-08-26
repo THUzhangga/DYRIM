@@ -1,0 +1,90 @@
+﻿生成启动时间为 2015/1/9 8:59:20。
+     1>项目“E:\GuoDawei\CHABAGOU\models\WaterYield_dll20130915 for GDW\WaterYield\WaterYield.vcxproj”在节点 2 上(Rebuild 个目标)。
+     1>Midl:
+         C:\Program Files (x86)\Windows Kits\8.0\bin\x86\midl.exe /D NDEBUG /W1 /nologo /char signed /env x64 /Oicf /h "WaterYield.h" /iid "WaterYield_i.c" /proxy "WaterYield_p.c" /tlb "Release\WaterYield.tlb" WaterYield.idl 
+         64 bit Processing .\WaterYield.idl
+         WaterYield.idl
+         64 bit Processing C:\Program Files (x86)\Windows Kits\8.0\Include\um\oaidl.idl
+         oaidl.idl
+         64 bit Processing C:\Program Files (x86)\Windows Kits\8.0\Include\um\objidl.idl
+         objidl.idl
+         64 bit Processing C:\Program Files (x86)\Windows Kits\8.0\Include\um\unknwn.idl
+         unknwn.idl
+         64 bit Processing C:\Program Files (x86)\Windows Kits\8.0\Include\shared\wtypes.idl
+         wtypes.idl
+         64 bit Processing C:\Program Files (x86)\Windows Kits\8.0\Include\shared\wtypesbase.idl
+         wtypesbase.idl
+         64 bit Processing C:\Program Files (x86)\Windows Kits\8.0\Include\shared\basetsd.h
+         basetsd.h
+         64 bit Processing C:\Program Files (x86)\Windows Kits\8.0\Include\shared\guiddef.h
+         guiddef.h
+         64 bit Processing C:\Program Files (x86)\Windows Kits\8.0\Include\um\ocidl.idl
+         ocidl.idl
+         64 bit Processing C:\Program Files (x86)\Windows Kits\8.0\Include\um\oleidl.idl
+         oleidl.idl
+         64 bit Processing C:\Program Files (x86)\Windows Kits\8.0\Include\um\servprov.idl
+         servprov.idl
+         64 bit Processing C:\Program Files (x86)\Windows Kits\8.0\Include\um\urlmon.idl
+         urlmon.idl
+         64 bit Processing C:\Program Files (x86)\Windows Kits\8.0\Include\um\msxml.idl
+         msxml.idl
+         64 bit Processing .\InterfaceStruct.idl
+         InterfaceStruct.idl
+         64 bit Processing C:\Program Files (x86)\Windows Kits\8.0\Include\um\msado15.idl
+         msado15.idl
+         64 bit Processing C:\Program Files (x86)\Windows Kits\8.0\Include\um\msado15_backcompat.idl
+         msado15_backcompat.idl
+         64 bit Processing C:\Program Files (x86)\Windows Kits\8.0\Include\um\oaidl.acf
+         oaidl.acf
+         64 bit Processing C:\Program Files (x86)\Windows Kits\8.0\Include\um\ocidl.acf
+         ocidl.acf
+       ClCompile:
+         D:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\x86_amd64\CL.exe /c /Zi /nologo /W0 /WX- /O2 /D WIN32 /D _WINDOWS /D NDEBUG /D _USRDLL /D _WINDLL /D _UNICODE /D UNICODE /D _ATL_STATIC_REGISTRY /Gm- /EHsc /MT /GS /fp:precise /Zc:wchar_t /Zc:forScope /Yc"stdafx.h" /Fp"Release\WaterYield.pch" /Fo"Release\\" /Fd"Release\vc110.pdb" /Gd /TP /errorReport:prompt stdafx.cpp
+         stdafx.cpp
+         D:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\x86_amd64\CL.exe /c /Zi /nologo /W0 /WX- /O2 /D WIN32 /D _WINDOWS /D NDEBUG /D _USRDLL /D _WINDLL /D _UNICODE /D UNICODE /D _ATL_STATIC_REGISTRY /Gm- /EHsc /MT /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Release\\" /Fd"Release\vc110.pdb" /Gd /TP /errorReport:prompt CoorTrans.cpp CWaterYield.cpp DeepSoil.cpp Leaf.cpp MidSoil.cpp MParameters.cpp SaveStatus.cpp SoilWater.cpp SurfaceWaterA.cpp vapotranspiration.cpp WaterBasin.cpp WaterYield.cpp yuliang.cpp YuLiangChBG.cpp YuLiangCMORPH.cpp
+         CoorTrans.cpp
+         CWaterYield.cpp
+         DeepSoil.cpp
+         Leaf.cpp
+         MidSoil.cpp
+         MParameters.cpp
+         SaveStatus.cpp
+         SoilWater.cpp
+         SurfaceWaterA.cpp
+         vapotranspiration.cpp
+         WaterBasin.cpp
+         WaterYield.cpp
+         yuliang.cpp
+         YuLiangChBG.cpp
+         YuLiangCMORPH.cpp
+         正在生成代码...
+         D:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\x86_amd64\CL.exe /c /Zi /nologo /W0 /WX- /O2 /D WIN32 /D _WINDOWS /D NDEBUG /D _USRDLL /D _WINDLL /D _UNICODE /D UNICODE /D _ATL_STATIC_REGISTRY /Gm- /EHsc /MT /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Release\\" /Fd"Release\vc110.pdb" /Gd /TC /errorReport:prompt WaterYield_i.c
+         WaterYield_i.c
+       ResourceCompile:
+         C:\Program Files (x86)\Windows Kits\8.0\bin\x86\rc.exe /D NDEBUG /D _UNICODE /D UNICODE /l"0x0804" /IRelease\ /nologo /fo"Release\WaterYield.res" WaterYield.rc 
+       Link:
+         D:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\x86_amd64\link.exe /ERRORREPORT:PROMPT /OUT:"Release\WaterYield.dll" /INCREMENTAL:NO /NOLOGO /DEF:".\WaterYield.def" /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /manifestinput:"D:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\Include\Manifest\dpiaware.manifest" /DEBUG /PDB:"Release\WaterYield.pdb" /SUBSYSTEM:WINDOWS /OPT:REF /OPT:ICF /TLBID:1 /DYNAMICBASE:NO /MACHINE:X64 /DLL Release\WaterYield.res
+         Release\CoorTrans.obj
+         Release\CWaterYield.obj
+         Release\DeepSoil.obj
+         Release\Leaf.obj
+         Release\MidSoil.obj
+         Release\MParameters.obj
+         Release\SaveStatus.obj
+         Release\SoilWater.obj
+         Release\stdafx.obj
+         Release\SurfaceWaterA.obj
+         Release\vapotranspiration.obj
+         Release\WaterBasin.obj
+         Release\WaterYield.obj
+         Release\yuliang.obj
+         Release\YuLiangChBG.obj
+         Release\WaterYield_i.obj
+         Release\YuLiangCMORPH.obj
+            正在创建库 Release\WaterYield.lib 和对象 Release\WaterYield.exp
+         WaterYield.vcxproj -> E:\GuoDawei\CHABAGOU\models\WaterYield_dll20130915 for GDW\WaterYield\Release\WaterYield.dll
+     1>已完成生成项目“E:\GuoDawei\CHABAGOU\models\WaterYield_dll20130915 for GDW\WaterYield\WaterYield.vcxproj”(Rebuild 个目标)的操作。
+
+生成成功。
+
+已用时间 00:00:24.20

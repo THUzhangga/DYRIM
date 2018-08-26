@@ -1,0 +1,26 @@
+HKCR
+{
+	WaterYield.WaterBasin.1 = s 'WaterBasin Class'
+	{
+		CLSID = s '{7F623663-C6B7-43E3-A6A2-765C3EAEBD00}'
+	}
+	WaterYield.WaterBasin = s 'WaterBasin Class'
+	{
+		CLSID = s '{7F623663-C6B7-43E3-A6A2-765C3EAEBD00}'
+		CurVer = s 'WaterYield.WaterBasin.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {7F623663-C6B7-43E3-A6A2-765C3EAEBD00} = s 'WaterBasin Class'
+		{
+			ProgID = s 'WaterYield.WaterBasin.1'
+			VersionIndependentProgID = s 'WaterYield.WaterBasin'
+			InprocServer32 = s '%MODULE%'
+			{
+				val ThreadingModel = s 'Apartment'
+			}
+			val AppID = s '%APPID%'
+			'TypeLib' = s '{C07C6D9B-9582-4A66-9E75-B7D8FA27AD4C}'
+		}
+	}
+}

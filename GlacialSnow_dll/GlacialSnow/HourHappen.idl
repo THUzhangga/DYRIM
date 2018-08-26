@@ -1,0 +1,18 @@
+import "oaidl.idl";
+import "ocidl.idl";
+
+//下面的其实程序没有用到，只是试验一下，传递自定义结构体指针是没有任何问题的。
+struct hourvalue
+{
+	long houroffset;
+	int Year;
+	int Mon;
+	int Day;
+	int Hour;
+	float SCA;
+	float Tmin;
+	float Tmax;
+	float Thour;
+	float P;
+	float A;
+};

@@ -1,0 +1,27 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 9.00
+# Visual Studio 2005
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "GlacialSnow", "GlacialSnow\GlacialSnow.vcproj", "{F3E21406-BC35-42CE-9DBC-A7561F4FE703}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "GlacialSnowPS", "GlacialSnow\GlacialSnowPS.vcproj", "{FDD4E0F9-44EE-45E0-B74E-491D668AC650}"
+	ProjectSection(ProjectDependencies) = postProject
+		{F3E21406-BC35-42CE-9DBC-A7561F4FE703} = {F3E21406-BC35-42CE-9DBC-A7561F4FE703}
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F3E21406-BC35-42CE-9DBC-A7561F4FE703}.Debug|Win32.ActiveCfg = Debug|Win32
+		{F3E21406-BC35-42CE-9DBC-A7561F4FE703}.Debug|Win32.Build.0 = Debug|Win32
+		{F3E21406-BC35-42CE-9DBC-A7561F4FE703}.Release|Win32.ActiveCfg = Release|Win32
+		{F3E21406-BC35-42CE-9DBC-A7561F4FE703}.Release|Win32.Build.0 = Release|Win32
+		{FDD4E0F9-44EE-45E0-B74E-491D668AC650}.Debug|Win32.ActiveCfg = Debug|Win32
+		{FDD4E0F9-44EE-45E0-B74E-491D668AC650}.Release|Win32.ActiveCfg = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

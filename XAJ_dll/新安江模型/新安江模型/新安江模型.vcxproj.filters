@@ -1,0 +1,110 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="源文件">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="头文件">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="资源文件">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav</Extensions>
+    </Filter>
+    <Filter Include="生成的文件">
+      <UniqueIdentifier>{ac5a2ad4-d94d-4a91-b0d9-18a7d5cfc7e3}</UniqueIdentifier>
+      <SourceControlFiles>False</SourceControlFiles>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="CoorTrans.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="CWaterYield.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="savestatus.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="yuliang.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="YuLiangChBG.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="新安江模型.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="新安江模型接口.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="My_i.c">
+      <Filter>生成的文件</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Midl Include="My.idl">
+      <Filter>源文件</Filter>
+    </Midl>
+    <Midl Include="InterfaceStruct.idl">
+      <Filter>头文件</Filter>
+    </Midl>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="新安江模型.def">
+      <Filter>源文件</Filter>
+    </None>
+    <None Include="My.rgs">
+      <Filter>资源文件</Filter>
+    </None>
+    <None Include="新安江模型.rgs">
+      <Filter>资源文件</Filter>
+    </None>
+    <None Include="ReadMe.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="CoorTrans.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="CWaterYield.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="DataStruct.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="InterfaceStruct.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Resource.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="SaveStatus.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="stdafx.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="yuliang.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="YuLiangChBG.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="新安江模型接口.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="My.h">
+      <Filter>生成的文件</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="新安江模型.rc">
+      <Filter>资源文件</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+</Project>

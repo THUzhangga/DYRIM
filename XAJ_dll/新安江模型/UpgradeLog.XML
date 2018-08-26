@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?><?xml-stylesheet type='text/xsl' href='_UpgradeReport_Files/UpgradeReport.xslt'?><UpgradeLog>
+<Properties><Property Name="Solution" Value="新安江模型">
+</Property><Property Name="Solution File" Value="C:\Hydro_Cool\Graduation\SoftWare\src 1.0\XAJ_dll\新安江模型\新安江模型.sln">
+</Property><Property Name="Date" Value="2009年9月12日 星期六">
+</Property><Property Name="Time" Value="21:36">
+</Property></Properties><Event ErrorLevel="0" Project="新安江模型" Source="新安江模型\新安江模型.vcproj" Description="ATL Server support has been removed from this version of Visual Studio. In case your ATL Project uses any ATL Server functionality, your project may not build. Please consult the MSDN documentation for a list of alternatives.">
+</Event><Event ErrorLevel="0" Project="新安江模型" Source="新安江模型\新安江模型.vcproj" Description="Web deployment to the local IIS server is no longer supported. The Web Deployment build tool has been removed from your project settings.">
+</Event><Event ErrorLevel="1" Project="新安江模型" Source="新安江模型\新安江模型.vcproj" Description="This application has been updated to include settings related to the User Account Control (UAC) feature of Windows Vista. By default, when run on Windows Vista with UAC enabled, this application is marked to run with the same privileges as the process that launched it. This marking also disables the application from running with virtualization. You can change UAC related settings from the Property Pages of the project.">
+</Event><Event ErrorLevel="0" Project="新安江模型" Source="新安江模型\新安江模型.vcproj" Description="Project upgraded successfully.">
+</Event><Event ErrorLevel="3" Project="新安江模型" Source="新安江模型\新安江模型.vcproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="新安江模型PS" Source="新安江模型\新安江模型PS.vcproj" Description="Web deployment to the local IIS server is no longer supported. The Web Deployment build tool has been removed from your project settings.">
+</Event><Event ErrorLevel="1" Project="新安江模型PS" Source="新安江模型\新安江模型PS.vcproj" Description="This application has been updated to include settings related to the User Account Control (UAC) feature of Windows Vista. By default, when run on Windows Vista with UAC enabled, this application is marked to run with the same privileges as the process that launched it. This marking also disables the application from running with virtualization. You can change UAC related settings from the Property Pages of the project.">
+</Event><Event ErrorLevel="0" Project="新安江模型PS" Source="新安江模型\新安江模型PS.vcproj" Description="Project upgraded successfully.">
+</Event><Event ErrorLevel="3" Project="新安江模型PS" Source="新安江模型\新安江模型PS.vcproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="" Source="新安江模型.sln" Description="Solution converted successfully">
+</Event><Event ErrorLevel="3" Project="" Source="新安江模型.sln" Description="Converted">
+</Event></UpgradeLog>

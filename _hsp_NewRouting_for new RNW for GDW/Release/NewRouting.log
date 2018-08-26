@@ -1,0 +1,54 @@
+﻿生成启动时间为 2017/2/13 15:00:18。
+     1>项目“E:\GuoDawei\CHABAGOU\models\_hsp_NewRouting_for new RNW for GDW\NewRouting.vcxproj”在节点 2 上(Rebuild 个目标)。
+     1>ClCompile:
+         D:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\x86_amd64\CL.exe /c /I"C:\Program Files\MPICH2\include" /Zi /nologo /W0 /WX- /Od /D WIN32 /D NDEBUG /D _CONSOLE /D _VC80_UPGRADE=0x0710 /D _MBCS /GF- /Gm- /EHsc /MT /GS /Gy /fp:precise /Zc:wchar_t /Zc:forScope /Fo".\Release/" /Fd".\Release/vc110.pdb" /Gd /TP /errorReport:prompt AVPM.cpp FVMunit.cpp HighSlopeRunoff.cpp Savestatus.cpp SlaveProcess.cpp WaterBelowChannel.cpp WaterInChannel.cpp WaterInRockSnow.cpp CoorTrans.cpp CpuUsageCount.cpp functions.cpp yuliang.cpp YuLiangChBG.cpp CommenProcess.cpp MasterProcess.cpp TransferProcess.cpp YuLiangCMORPH.cpp
+         AVPM.cpp
+         FVMunit.cpp
+         HighSlopeRunoff.cpp
+         Savestatus.cpp
+         SlaveProcess.cpp
+         WaterBelowChannel.cpp
+         WaterInChannel.cpp
+         WaterInRockSnow.cpp
+         CoorTrans.cpp
+         CpuUsageCount.cpp
+         functions.cpp
+         yuliang.cpp
+         YuLiangChBG.cpp
+         CommenProcess.cpp
+         MasterProcess.cpp
+         TransferProcess.cpp
+         YuLiangCMORPH.cpp
+         正在生成代码...
+         D:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\x86_amd64\CL.exe /c /I"C:\Program Files\MPICH2\include" /Zi /nologo /W0 /WX- /O2 /D WIN32 /D NDEBUG /D _CONSOLE /D _VC80_UPGRADE=0x0710 /D _MBCS /GF- /Gm- /EHsc /MT /GS /Gy /fp:precise /Zc:wchar_t /Zc:forScope /Fo".\Release/" /Fd".\Release/vc110.pdb" /Gd /TP /errorReport:prompt DataStruct.cpp main.cpp TreeList.cpp
+         DataStruct.cpp
+         main.cpp
+         TreeList.cpp
+         正在生成代码...
+       Link:
+         D:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\x86_amd64\link.exe /ERRORREPORT:PROMPT /OUT:".\Release\NewRouting.exe" /INCREMENTAL:NO /NOLOGO /LIBPATH:"C:\Program Files\MPICH2\lib" cxx.lib mpi.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /manifestinput:"D:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\Include\Manifest\dpiaware.manifest" /PDB:".\Release/ttttt.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE:NO /IMPLIB:".\Release\NewRouting.lib" /MACHINE:X64 .\Release/AVPM.obj
+         .\Release/FVMunit.obj
+         .\Release/HighSlopeRunoff.obj
+         .\Release/Savestatus.obj
+         .\Release/SlaveProcess.obj
+         .\Release/WaterBelowChannel.obj
+         .\Release/WaterInChannel.obj
+         .\Release/WaterInRockSnow.obj
+         .\Release/CoorTrans.obj
+         .\Release/CpuUsageCount.obj
+         .\Release/DataStruct.obj
+         .\Release/functions.obj
+         .\Release/yuliang.obj
+         .\Release/YuLiangChBG.obj
+         .\Release/CommenProcess.obj
+         .\Release/main.obj
+         .\Release/MasterProcess.obj
+         .\Release/TransferProcess.obj
+         .\Release/TreeList.obj
+         .\Release/YuLiangCMORPH.obj
+         NewRouting.vcxproj -> E:\GuoDawei\CHABAGOU\models\_hsp_NewRouting_for new RNW for GDW\.\Release\NewRouting.exe
+     1>已完成生成项目“E:\GuoDawei\CHABAGOU\models\_hsp_NewRouting_for new RNW for GDW\NewRouting.vcxproj”(Rebuild 个目标)的操作。
+
+生成成功。
+
+已用时间 00:00:24.34

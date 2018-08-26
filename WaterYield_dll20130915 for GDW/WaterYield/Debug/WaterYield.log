@@ -1,0 +1,56 @@
+﻿  64 bit Processing .\WaterYield.idl
+  WaterYield.idl
+  64 bit Processing C:\Program Files (x86)\Windows Kits\8.0\Include\um\oaidl.idl
+  oaidl.idl
+  64 bit Processing C:\Program Files (x86)\Windows Kits\8.0\Include\um\objidl.idl
+  objidl.idl
+  64 bit Processing C:\Program Files (x86)\Windows Kits\8.0\Include\um\unknwn.idl
+  unknwn.idl
+  64 bit Processing C:\Program Files (x86)\Windows Kits\8.0\Include\shared\wtypes.idl
+  wtypes.idl
+  64 bit Processing C:\Program Files (x86)\Windows Kits\8.0\Include\shared\wtypesbase.idl
+  wtypesbase.idl
+  64 bit Processing C:\Program Files (x86)\Windows Kits\8.0\Include\shared\basetsd.h
+  basetsd.h
+  64 bit Processing C:\Program Files (x86)\Windows Kits\8.0\Include\shared\guiddef.h
+  guiddef.h
+  64 bit Processing C:\Program Files (x86)\Windows Kits\8.0\Include\um\ocidl.idl
+  ocidl.idl
+  64 bit Processing C:\Program Files (x86)\Windows Kits\8.0\Include\um\oleidl.idl
+  oleidl.idl
+  64 bit Processing C:\Program Files (x86)\Windows Kits\8.0\Include\um\servprov.idl
+  servprov.idl
+  64 bit Processing C:\Program Files (x86)\Windows Kits\8.0\Include\um\urlmon.idl
+  urlmon.idl
+  64 bit Processing C:\Program Files (x86)\Windows Kits\8.0\Include\um\msxml.idl
+  msxml.idl
+  64 bit Processing .\InterfaceStruct.idl
+  InterfaceStruct.idl
+  64 bit Processing C:\Program Files (x86)\Windows Kits\8.0\Include\um\msado15.idl
+  msado15.idl
+  64 bit Processing C:\Program Files (x86)\Windows Kits\8.0\Include\um\msado15_backcompat.idl
+  msado15_backcompat.idl
+  64 bit Processing C:\Program Files (x86)\Windows Kits\8.0\Include\um\oaidl.acf
+  oaidl.acf
+  64 bit Processing C:\Program Files (x86)\Windows Kits\8.0\Include\um\ocidl.acf
+  ocidl.acf
+  stdafx.cpp
+  CoorTrans.cpp
+  CWaterYield.cpp
+  DeepSoil.cpp
+  Leaf.cpp
+  MidSoil.cpp
+  MParameters.cpp
+  SaveStatus.cpp
+  SurfaceWaterA.cpp
+  vapotranspiration.cpp
+  WaterBasin.cpp
+  WaterYield.cpp
+  yuliang.cpp
+  YuLiangChBG.cpp
+  YuLiangCMORPH.cpp
+  正在生成代码...
+  SoilWater.cpp
+  WaterYield_i.c
+     正在创建库 Debug\WaterYield.lib 和对象 Debug\WaterYield.exp
+  WaterYield.vcxproj -> E:\models\WaterYield_dll20130915 for GDW\WaterYield\Debug\WaterYield.dll

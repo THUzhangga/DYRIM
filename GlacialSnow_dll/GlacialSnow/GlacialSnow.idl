@@ -1,0 +1,43 @@
+// GlacialSnow.idl : GlacialSnow 的 IDL 源
+//
+
+// 此文件将由 MIDL 工具处理以
+// 产生类型库(GlacialSnow.tlb)和封送处理代码。
+
+import "oaidl.idl";
+import "ocidl.idl";
+import "HourHappen.idl";
+import "msado15.idl";//要引用此           
+
+[
+	object,
+	uuid(89745127-6161-4B13-907B-91F901F2A1C4),
+	dual,
+	nonextensible,
+	helpstring("ISRM 接口"),
+	pointer_default(unique)
+]
+interface ISRM : IDispatch{
+	[id(1), helpstring("方法OpenOracle")] HRESULT OpenOracle(/*[in] _Connection** pCnn*/[in] BSTR user, [in] BSTR password, [in] BSTR sid);
+	[id(2), helpstring("方法SnowCalc")] HRESULT SnowInitialize([in] FLOAT myParaX, [in] FLOAT myParaY, [in] ULONGLONG RegionIndex, [in] LONG Length, [in] ULONGLONG Value/*, [out] struct hourvalue* HourHappen, [out]  float* A*/,FLOAT A, FLOAT Havg);
+	[id(3), helpstring("方法SnowCalc")] HRESULT SnowCalc([in] LONG Houroffset, [in] FLOAT* HourRain);
+	[id(4), helpstring("方法SRMFinalize")] HRESULT SRMFinalize(void);
+	[id(5), helpstring("方法ReleaseHeap")] HRESULT ReleaseHeap(void);
+};
+[
+	uuid(EE85C68C-79E4-4133-875F-CE88C3CF915D),
+	version(1.0),
+	helpstring("GlacialSnow 1.0 类型库")
+]
+library GlacialSnowLib
+{
+	importlib("stdole2.tlb");
+	[
+		uuid(6CC60EA6-54D2-4170-90CB-7BD3D23AF27D),
+		helpstring("SRM Class")
+	]
+	coclass SRM
+	{
+		[default] interface ISRM;
+	};
+};

@@ -1,0 +1,26 @@
+HKCR
+{
+	新安江模型.My.1 = s 'My Class'
+	{
+		CLSID = s '{4C5338FF-E85A-49FC-930D-D3FCC6A1B6C2}'
+	}
+	新安江模型.My = s 'My Class'
+	{
+		CLSID = s '{4C5338FF-E85A-49FC-930D-D3FCC6A1B6C2}'
+		CurVer = s '新安江模型.My.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {4C5338FF-E85A-49FC-930D-D3FCC6A1B6C2} = s 'My Class'
+		{
+			ProgID = s '新安江模型.My.1'
+			VersionIndependentProgID = s '新安江模型.My'
+			InprocServer32 = s '%MODULE%'
+			{
+				val ThreadingModel = s 'Apartment'
+			}
+			val AppID = s '%APPID%'
+			'TypeLib' = s '{ED9FBBDB-45BA-4A44-97D3-35FC78DAF1CB}'
+		}
+	}
+}

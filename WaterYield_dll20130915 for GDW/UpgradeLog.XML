@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?><?xml-stylesheet type='text/xsl' href='_UpgradeReport_Files/UpgradeReport.xslt'?><UpgradeLog>
+<Properties><Property Name="Solution" Value="WaterYield">
+</Property><Property Name="Solution File" Value="C:\Hydro_Cool\Graduation\SoftWare\src 1.0\WaterYield_dll\WaterYield.sln">
+</Property><Property Name="User Options File" Value="C:\Hydro_Cool\Graduation\SoftWare\src 1.0\WaterYield_dll\WaterYield.suo">
+</Property><Property Name="Date" Value="2009年9月12日 星期六">
+</Property><Property Name="Time" Value="21:35">
+</Property></Properties><Event ErrorLevel="0" Project="" Source="WaterYield.sln" Description="File successfully backed up as C:\Hydro_Cool\Graduation\SoftWare\src 1.0\WaterYield_dll\WaterYield.sln.old">
+</Event><Event ErrorLevel="0" Project="" Source="WaterYield.suo" Description="File successfully backed up as C:\Hydro_Cool\Graduation\SoftWare\src 1.0\WaterYield_dll\WaterYield.suo.old">
+</Event><Event ErrorLevel="0" Project="WaterYield" Source="WaterYield\WaterYield.vcproj" Description="ATL Server support has been removed from this version of Visual Studio. In case your ATL Project uses any ATL Server functionality, your project may not build. Please consult the MSDN documentation for a list of alternatives.">
+</Event><Event ErrorLevel="0" Project="WaterYield" Source="WaterYield\WaterYield.vcproj" Description="Web deployment to the local IIS server is no longer supported. The Web Deployment build tool has been removed from your project settings.">
+</Event><Event ErrorLevel="1" Project="WaterYield" Source="WaterYield\WaterYield.vcproj" Description="This application has been updated to include settings related to the User Account Control (UAC) feature of Windows Vista. By default, when run on Windows Vista with UAC enabled, this application is marked to run with the same privileges as the process that launched it. This marking also disables the application from running with virtualization. You can change UAC related settings from the Property Pages of the project.">
+</Event><Event ErrorLevel="0" Project="WaterYield" Source="WaterYield\WaterYield.vcproj" Description="Project file successfully backed up as 'C:\Hydro_Cool\Graduation\SoftWare\src 1.0\WaterYield_dll\WaterYield\WaterYield.vcproj.8.00.old'.">
+</Event><Event ErrorLevel="0" Project="WaterYield" Source="WaterYield\WaterYield.vcproj" Description="Project upgraded successfully.">
+</Event><Event ErrorLevel="3" Project="WaterYield" Source="WaterYield\WaterYield.vcproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="WaterYieldPS" Source="WaterYield\WaterYieldPS.vcproj" Description="Web deployment to the local IIS server is no longer supported. The Web Deployment build tool has been removed from your project settings.">
+</Event><Event ErrorLevel="1" Project="WaterYieldPS" Source="WaterYield\WaterYieldPS.vcproj" Description="This application has been updated to include settings related to the User Account Control (UAC) feature of Windows Vista. By default, when run on Windows Vista with UAC enabled, this application is marked to run with the same privileges as the process that launched it. This marking also disables the application from running with virtualization. You can change UAC related settings from the Property Pages of the project.">
+</Event><Event ErrorLevel="0" Project="WaterYieldPS" Source="WaterYield\WaterYieldPS.vcproj" Description="Project file successfully backed up as 'C:\Hydro_Cool\Graduation\SoftWare\src 1.0\WaterYield_dll\WaterYield\WaterYieldPS.vcproj.8.00.old'.">
+</Event><Event ErrorLevel="0" Project="WaterYieldPS" Source="WaterYield\WaterYieldPS.vcproj" Description="Project upgraded successfully.">
+</Event><Event ErrorLevel="3" Project="WaterYieldPS" Source="WaterYield\WaterYieldPS.vcproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="" Source="WaterYield.sln" Description="Solution converted successfully">
+</Event><Event ErrorLevel="3" Project="" Source="WaterYield.sln" Description="Converted">
+</Event></UpgradeLog>

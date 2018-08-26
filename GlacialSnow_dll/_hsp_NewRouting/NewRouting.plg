@@ -1,0 +1,59 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: ttttt - Win32 Debug--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating temporary file "C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSPD7.tmp" with contents
+[
+/nologo /MLd /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_CONSOLE" /D "_MBCS" /Fp"Debug/ttttt.pch" /YX /Fo"Debug/" /Fd"Debug/" /FD /GZ  /c 
+"E:\并行产汇流\ttttt\DataStruct.cpp"
+"E:\并行产汇流\ttttt\main.cpp"
+"E:\并行产汇流\ttttt\TreeList.cpp"
+]
+Creating command line "cl.exe @C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSPD7.tmp" 
+Creating temporary file "C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSPD8.tmp" with contents
+[
+kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib  kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /nologo /subsystem:console /incremental:yes /pdb:"Debug/ttttt.pdb" /debug /machine:I386 /out:"Debug/ttttt.exe" /pdbtype:sept 
+".\Debug\DataStruct.obj"
+".\Debug\main.obj"
+".\Debug\TreeList.obj"
+]
+Creating command line "link.exe @C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSPD8.tmp"
+<h3>Output Window</h3>
+Compiling...
+DataStruct.cpp
+e:\并行产汇流\ttttt\datastruct.h(8) : error C2632: 'long' followed by 'long' is illegal
+e:\并行产汇流\ttttt\datastruct.h(17) : error C2632: 'long' followed by 'long' is illegal
+e:\并行产汇流\ttttt\datastruct.h(18) : error C2632: 'long' followed by 'long' is illegal
+e:\并行产汇流\ttttt\datastruct.h(20) : error C2632: 'long' followed by 'long' is illegal
+e:\并行产汇流\ttttt\datastruct.h(21) : error C2632: 'long' followed by 'long' is illegal
+e:\并行产汇流\ttttt\datastruct.h(31) : error C2632: 'long' followed by 'long' is illegal
+e:\并行产汇流\ttttt\datastruct.h(33) : error C2632: 'long' followed by 'long' is illegal
+e:\并行产汇流\ttttt\datastruct.cpp(15) : error C2632: 'long' followed by 'long' is illegal
+e:\并行产汇流\ttttt\datastruct.cpp(28) : error C2632: 'long' followed by 'long' is illegal
+e:\并行产汇流\ttttt\datastruct.cpp(38) : error C2632: 'long' followed by 'long' is illegal
+e:\并行产汇流\ttttt\datastruct.cpp(68) : error C2632: 'long' followed by 'long' is illegal
+main.cpp
+e:\并行产汇流\ttttt\main.cpp(7) : fatal error C1083: Cannot open include file: 'atlstr.h': No such file or directory
+TreeList.cpp
+e:\并行产汇流\ttttt\datastruct.h(8) : error C2632: 'long' followed by 'long' is illegal
+e:\并行产汇流\ttttt\datastruct.h(17) : error C2632: 'long' followed by 'long' is illegal
+e:\并行产汇流\ttttt\datastruct.h(18) : error C2632: 'long' followed by 'long' is illegal
+e:\并行产汇流\ttttt\datastruct.h(20) : error C2632: 'long' followed by 'long' is illegal
+e:\并行产汇流\ttttt\datastruct.h(21) : error C2632: 'long' followed by 'long' is illegal
+e:\并行产汇流\ttttt\datastruct.h(31) : error C2632: 'long' followed by 'long' is illegal
+e:\并行产汇流\ttttt\datastruct.h(33) : error C2632: 'long' followed by 'long' is illegal
+e:\并行产汇流\ttttt\treelist.cpp(38) : error C2632: 'long' followed by 'long' is illegal
+e:\并行产汇流\ttttt\treelist.cpp(86) : error C2632: 'long' followed by 'long' is illegal
+Error executing cl.exe.
+
+
+
+<h3>Results</h3>
+ttttt.exe - 21 error(s), 0 warning(s)
+</pre>
+</body>
+</html>

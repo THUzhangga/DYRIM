@@ -1,0 +1,10 @@
+﻿生成启动时间为 2012/3/25 21:07:02。
+     1>项目“E:\SHY\GlacialSnow_dll\GlacialSnow\GlacialSnow.vcxproj”在节点 2 上(build 个目标)。
+     1>InitializeBuildStatus:
+         正在对“Release\GlacialSnow.unsuccessfulbuild”执行 Touch 任务。
+     1>C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\Microsoft.CppCommon.targets(322,7): error MSB4094: “GlacialSnow.idl;HourHappen.idl”对于“MIDL”任务的“Source”参数是无效值。不能将多个项传入“Microsoft.Build.Framework.ITaskItem”类型的参数。
+     1>已完成生成项目“E:\SHY\GlacialSnow_dll\GlacialSnow\GlacialSnow.vcxproj”(build 个目标)的操作 - 失败。
+
+生成失败。
+
+已用时间 00:00:00.01

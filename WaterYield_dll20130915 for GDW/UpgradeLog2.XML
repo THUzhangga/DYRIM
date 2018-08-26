@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?><?xml-stylesheet type='text/xsl' href='_UpgradeReport_Files/UpgradeReport.xslt'?><UpgradeLog>
+<Properties><Property Name="Solution" Value="WaterYield">
+</Property><Property Name="解决方案文件" Value="D:\WaterYield_dll20101210\WaterYield.sln">
+</Property><Property Name="Date" Value="2010年12月10日">
+</Property><Property Name="Time" Value="18:53">
+</Property><Property Name="日志号" Value="2">
+</Property></Properties><Event ErrorLevel="0" Project="WaterYield" Source="WaterYield\WaterYield.vcproj" Description="Converting project file 'D:\WaterYield_dll20101210\WaterYield\WaterYield.vcproj'.">
+</Event><Event ErrorLevel="1" Project="WaterYield" Source="WaterYield\WaterYield.vcproj" Description="VCWebServiceProxyGeneratorTool is no longer supported. The tool has been removed from your project settings.">
+</Event><Event ErrorLevel="1" Project="WaterYield" Source="WaterYield\WaterYield.vcproj" Description="Attribute 'Detect64BitPortabilityProblems' of 'VCCLCompilerTool' is not supported in this version and has been removed during conversion.">
+</Event><Event ErrorLevel="1" Project="WaterYield" Source="WaterYield\WaterYield.vcproj" Description="Attribute 'Detect64BitPortabilityProblems' of 'VCCLCompilerTool' is not supported in this version and has been removed during conversion.">
+</Event><Event ErrorLevel="1" Project="WaterYield" Source="WaterYield\WaterYield.vcproj" Description="MSB8012: $(TargetPath) ('D:\WaterYield_dll20101210\WaterYield\Debug\WaterYield.dll') does not match the Linker's OutputFile property value 'Debug\WaterYield.dll' ('D:\WaterYield_dll20101210\Debug\WaterYield.dll') in project configuration 'Debug|Win32'. This may cause your project to build incorrectly. To correct this, please make sure that $(TargetPath) property value matches the value specified in %(Link.OutputFile).">
+</Event><Event ErrorLevel="1" Project="WaterYield" Source="WaterYield\WaterYield.vcproj" Description="MSB8012: $(TargetPath) ('D:\WaterYield_dll20101210\WaterYield\Release\WaterYield.dll') does not match the Linker's OutputFile property value 'Release\WaterYield.dll' ('D:\WaterYield_dll20101210\Release\WaterYield.dll') in project configuration 'Release|Win32'. This may cause your project to build incorrectly. To correct this, please make sure that $(TargetPath) property value matches the value specified in %(Link.OutputFile).">
+</Event><Event ErrorLevel="0" Project="WaterYield" Source="WaterYield\WaterYield.vcproj" Description="Done converting to new project file 'D:\WaterYield_dll20101210\WaterYield\WaterYield.vcxproj'.">
+</Event><Event ErrorLevel="3" Project="WaterYield" Source="WaterYield\WaterYield.vcproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="WaterYieldPS" Source="WaterYield\WaterYieldPS.vcproj" Description="Converting project file 'D:\WaterYield_dll20101210\WaterYield\WaterYieldPS.vcproj'.">
+</Event><Event ErrorLevel="1" Project="WaterYieldPS" Source="WaterYield\WaterYieldPS.vcproj" Description="VCWebServiceProxyGeneratorTool is no longer supported. The tool has been removed from your project settings.">
+</Event><Event ErrorLevel="1" Project="WaterYieldPS" Source="WaterYield\WaterYieldPS.vcproj" Description="MSB8012: $(TargetPath) ('D:\WaterYield_dll20101210\WaterYield\DebugPS\WaterYieldPS.dll') does not match the Linker's OutputFile property value 'DebugPS\WaterYieldPS.dll' ('D:\WaterYield_dll20101210\DebugPS\WaterYieldPS.dll') in project configuration 'Debug|Win32'. This may cause your project to build incorrectly. To correct this, please make sure that $(TargetPath) property value matches the value specified in %(Link.OutputFile).">
+</Event><Event ErrorLevel="1" Project="WaterYieldPS" Source="WaterYield\WaterYieldPS.vcproj" Description="MSB8012: $(TargetPath) ('D:\WaterYield_dll20101210\WaterYield\ReleasePS\WaterYieldPS.dll') does not match the Linker's OutputFile property value 'ReleasePS\WaterYieldPS.dll' ('D:\WaterYield_dll20101210\ReleasePS\WaterYieldPS.dll') in project configuration 'Release|Win32'. This may cause your project to build incorrectly. To correct this, please make sure that $(TargetPath) property value matches the value specified in %(Link.OutputFile).">
+</Event><Event ErrorLevel="0" Project="WaterYieldPS" Source="WaterYield\WaterYieldPS.vcproj" Description="Done converting to new project file 'D:\WaterYield_dll20101210\WaterYield\WaterYieldPS.vcxproj'.">
+</Event><Event ErrorLevel="3" Project="WaterYieldPS" Source="WaterYield\WaterYieldPS.vcproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="" Source="WaterYield.sln" Description="成功转换解决方案">
+</Event><Event ErrorLevel="3" Project="" Source="WaterYield.sln" Description="Converted">
+</Event></UpgradeLog>

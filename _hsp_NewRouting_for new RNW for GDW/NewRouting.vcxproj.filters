@@ -1,0 +1,179 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{7cca2808-6147-41d9-983c-58fd88b917fa}</UniqueIdentifier>
+      <Extensions>cpp;c;cxx;rc;def;r;odl;idl;hpj;bat</Extensions>
+    </Filter>
+    <Filter Include="Source Files\Physics Model">
+      <UniqueIdentifier>{5f711e40-ff06-49c1-a824-11d1cc2bf0a5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Physics Model\扩散波及重力侵蚀模型">
+      <UniqueIdentifier>{499148b8-a13e-4d6d-b211-7f9ccfb4f79f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Physics Model\高山大坡产汇流模型">
+      <UniqueIdentifier>{d01e42af-bb86-43f2-85f3-74587e2129af}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Other Tools">
+      <UniqueIdentifier>{a5b8f54f-30e4-4832-a8fb-1fc6e2f1db46}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Parallel Computing">
+      <UniqueIdentifier>{72a9b007-3b7f-47c2-97d5-85cf7a6b0c01}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{216a4392-639a-4aad-8871-52fe4310fce6}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl</Extensions>
+    </Filter>
+    <Filter Include="Header Files\Physics Model">
+      <UniqueIdentifier>{bca48a3b-fc10-44e4-9218-01cf25d6bcca}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Physics Model\扩散波及重力侵蚀模型">
+      <UniqueIdentifier>{dc2434a4-1b17-40e8-bdbb-7d76c3380616}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Physics Model\高山大坡产汇流模型">
+      <UniqueIdentifier>{18c6b6cb-69d4-41b3-a834-04608644659c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Other Tools">
+      <UniqueIdentifier>{00976962-1757-4404-9ea3-18facac02bf4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Parallel Computing">
+      <UniqueIdentifier>{6abb720a-9608-4a40-bf34-a93b371e9684}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{da2d7ce0-c984-44c8-9f11-151e512d203f}</UniqueIdentifier>
+      <Extensions>ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe</Extensions>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="AVPM.cpp">
+      <Filter>Source Files\Physics Model\扩散波及重力侵蚀模型</Filter>
+    </ClCompile>
+    <ClCompile Include="FVMunit.cpp">
+      <Filter>Source Files\Physics Model\高山大坡产汇流模型</Filter>
+    </ClCompile>
+    <ClCompile Include="HighSlopeRunoff.cpp">
+      <Filter>Source Files\Physics Model\高山大坡产汇流模型</Filter>
+    </ClCompile>
+    <ClCompile Include="Savestatus.cpp">
+      <Filter>Source Files\Physics Model\高山大坡产汇流模型</Filter>
+    </ClCompile>
+    <ClCompile Include="WaterBelowChannel.cpp">
+      <Filter>Source Files\Physics Model\高山大坡产汇流模型</Filter>
+    </ClCompile>
+    <ClCompile Include="WaterInChannel.cpp">
+      <Filter>Source Files\Physics Model\高山大坡产汇流模型</Filter>
+    </ClCompile>
+    <ClCompile Include="WaterInRockSnow.cpp">
+      <Filter>Source Files\Physics Model\高山大坡产汇流模型</Filter>
+    </ClCompile>
+    <ClCompile Include="CoorTrans.cpp">
+      <Filter>Source Files\Other Tools</Filter>
+    </ClCompile>
+    <ClCompile Include="CpuUsageCount.cpp">
+      <Filter>Source Files\Other Tools</Filter>
+    </ClCompile>
+    <ClCompile Include="DataStruct.cpp">
+      <Filter>Source Files\Other Tools</Filter>
+    </ClCompile>
+    <ClCompile Include="functions.cpp">
+      <Filter>Source Files\Other Tools</Filter>
+    </ClCompile>
+    <ClCompile Include="yuliang.cpp">
+      <Filter>Source Files\Other Tools</Filter>
+    </ClCompile>
+    <ClCompile Include="YuLiangChBG.cpp">
+      <Filter>Source Files\Other Tools</Filter>
+    </ClCompile>
+    <ClCompile Include="CommenProcess.cpp">
+      <Filter>Source Files\Parallel Computing</Filter>
+    </ClCompile>
+    <ClCompile Include="main.cpp">
+      <Filter>Source Files\Parallel Computing</Filter>
+    </ClCompile>
+    <ClCompile Include="MasterProcess.cpp">
+      <Filter>Source Files\Parallel Computing</Filter>
+    </ClCompile>
+    <ClCompile Include="SlaveProcess.cpp">
+      <Filter>Source Files\Parallel Computing</Filter>
+    </ClCompile>
+    <ClCompile Include="TransferProcess.cpp">
+      <Filter>Source Files\Parallel Computing</Filter>
+    </ClCompile>
+    <ClCompile Include="TreeList.cpp">
+      <Filter>Source Files\Parallel Computing</Filter>
+    </ClCompile>
+    <ClCompile Include="YuLiangCMORPH.cpp">
+      <Filter>Source Files\Other Tools</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="AVPM.h">
+      <Filter>Header Files\Physics Model\扩散波及重力侵蚀模型</Filter>
+    </ClInclude>
+    <ClInclude Include="FVMunit.h">
+      <Filter>Header Files\Physics Model\高山大坡产汇流模型</Filter>
+    </ClInclude>
+    <ClInclude Include="HighSlopeRunoff.h">
+      <Filter>Header Files\Physics Model\高山大坡产汇流模型</Filter>
+    </ClInclude>
+    <ClInclude Include="SaveStatus.h">
+      <Filter>Header Files\Physics Model\高山大坡产汇流模型</Filter>
+    </ClInclude>
+    <ClInclude Include="WaterBelowChannel.h">
+      <Filter>Header Files\Physics Model\高山大坡产汇流模型</Filter>
+    </ClInclude>
+    <ClInclude Include="WaterInChannel.h">
+      <Filter>Header Files\Physics Model\高山大坡产汇流模型</Filter>
+    </ClInclude>
+    <ClInclude Include="WaterInRockSnow.h">
+      <Filter>Header Files\Physics Model\高山大坡产汇流模型</Filter>
+    </ClInclude>
+    <ClInclude Include="CoorTrans.h">
+      <Filter>Header Files\Other Tools</Filter>
+    </ClInclude>
+    <ClInclude Include="CpuUsageCount.h">
+      <Filter>Header Files\Other Tools</Filter>
+    </ClInclude>
+    <ClInclude Include="DataStruct.h">
+      <Filter>Header Files\Other Tools</Filter>
+    </ClInclude>
+    <ClInclude Include="functions.h">
+      <Filter>Header Files\Other Tools</Filter>
+    </ClInclude>
+    <ClInclude Include="yuliang.h">
+      <Filter>Header Files\Other Tools</Filter>
+    </ClInclude>
+    <ClInclude Include="YuLiangChBG.h">
+      <Filter>Header Files\Other Tools</Filter>
+    </ClInclude>
+    <ClInclude Include="CommenProcess.h">
+      <Filter>Header Files\Parallel Computing</Filter>
+    </ClInclude>
+    <ClInclude Include="MasterProcess.h">
+      <Filter>Header Files\Parallel Computing</Filter>
+    </ClInclude>
+    <ClInclude Include="SlaveProcess.h">
+      <Filter>Header Files\Parallel Computing</Filter>
+    </ClInclude>
+    <ClInclude Include="TransferProcess.h">
+      <Filter>Header Files\Parallel Computing</Filter>
+    </ClInclude>
+    <ClInclude Include="TreeList.h">
+      <Filter>Header Files\Parallel Computing</Filter>
+    </ClInclude>
+    <ClInclude Include="YuLiangCMORPH.h">
+      <Filter>Header Files\Other Tools</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="OriginalCode.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
+    <Text Include="warning.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
+    <Text Include="WaterInchannel.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
+  </ItemGroup>
+</Project>

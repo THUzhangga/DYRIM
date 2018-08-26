@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?><?xml-stylesheet type='text/xsl' href='_UpgradeReport_Files/UpgradeReport.xslt'?><UpgradeLog>
+<Properties><Property Name="Solution" Value="GlacialSnow">
+</Property><Property Name="解决方案文件" Value="E:\SHY\GlacialSnow_dll\GlacialSnow.sln">
+</Property><Property Name="Date" Value="2012年3月25日">
+</Property><Property Name="Time" Value="21:04">
+</Property><Property Name="日志号" Value="2">
+</Property></Properties><Event ErrorLevel="0" Project="GlacialSnow" Source="GlacialSnow\GlacialSnow.vcproj" Description="Converting project file 'E:\SHY\GlacialSnow_dll\GlacialSnow\GlacialSnow.vcproj'.">
+</Event><Event ErrorLevel="1" Project="GlacialSnow" Source="GlacialSnow\GlacialSnow.vcproj" Description="VCWebServiceProxyGeneratorTool is no longer supported. The tool has been removed from your project settings.">
+</Event><Event ErrorLevel="1" Project="GlacialSnow" Source="GlacialSnow\GlacialSnow.vcproj" Description="Attribute 'Detect64BitPortabilityProblems' of 'VCCLCompilerTool' is not supported in this version and has been removed during conversion.">
+</Event><Event ErrorLevel="1" Project="GlacialSnow" Source="GlacialSnow\GlacialSnow.vcproj" Description="Attribute 'Detect64BitPortabilityProblems' of 'VCCLCompilerTool' is not supported in this version and has been removed during conversion.">
+</Event><Event ErrorLevel="1" Project="GlacialSnow" Source="GlacialSnow\GlacialSnow.vcproj" Description="MSB8012: $(TargetPath) ('E:\SHY\GlacialSnow_dll\GlacialSnow\Debug\GlacialSnow.dll') does not match the Linker's OutputFile property value 'Debug\GlacialSnow.dll' ('E:\SHY\GlacialSnow_dll\Debug\GlacialSnow.dll') in project configuration 'Debug|Win32'. This may cause your project to build incorrectly. To correct this, please make sure that $(TargetPath) property value matches the value specified in %(Link.OutputFile).">
+</Event><Event ErrorLevel="1" Project="GlacialSnow" Source="GlacialSnow\GlacialSnow.vcproj" Description="MSB8012: $(TargetPath) ('E:\SHY\GlacialSnow_dll\GlacialSnow\Release\GlacialSnow.dll') does not match the Linker's OutputFile property value 'Release\GlacialSnow.dll' ('E:\SHY\GlacialSnow_dll\Release\GlacialSnow.dll') in project configuration 'Release|Win32'. This may cause your project to build incorrectly. To correct this, please make sure that $(TargetPath) property value matches the value specified in %(Link.OutputFile).">
+</Event><Event ErrorLevel="0" Project="GlacialSnow" Source="GlacialSnow\GlacialSnow.vcproj" Description="Done converting to new project file 'E:\SHY\GlacialSnow_dll\GlacialSnow\GlacialSnow.vcxproj'.">
+</Event><Event ErrorLevel="3" Project="GlacialSnow" Source="GlacialSnow\GlacialSnow.vcproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="GlacialSnowPS" Source="GlacialSnow\GlacialSnowPS.vcproj" Description="Converting project file 'E:\SHY\GlacialSnow_dll\GlacialSnow\GlacialSnowPS.vcproj'.">
+</Event><Event ErrorLevel="1" Project="GlacialSnowPS" Source="GlacialSnow\GlacialSnowPS.vcproj" Description="VCWebServiceProxyGeneratorTool is no longer supported. The tool has been removed from your project settings.">
+</Event><Event ErrorLevel="1" Project="GlacialSnowPS" Source="GlacialSnow\GlacialSnowPS.vcproj" Description="MSB8012: $(TargetPath) ('E:\SHY\GlacialSnow_dll\GlacialSnow\DebugPS\GlacialSnowPS.dll') does not match the Linker's OutputFile property value 'DebugPS\GlacialSnowPS.dll' ('E:\SHY\GlacialSnow_dll\DebugPS\GlacialSnowPS.dll') in project configuration 'Debug|Win32'. This may cause your project to build incorrectly. To correct this, please make sure that $(TargetPath) property value matches the value specified in %(Link.OutputFile).">
+</Event><Event ErrorLevel="1" Project="GlacialSnowPS" Source="GlacialSnow\GlacialSnowPS.vcproj" Description="MSB8012: $(TargetPath) ('E:\SHY\GlacialSnow_dll\GlacialSnow\ReleasePS\GlacialSnowPS.dll') does not match the Linker's OutputFile property value 'ReleasePS\GlacialSnowPS.dll' ('E:\SHY\GlacialSnow_dll\ReleasePS\GlacialSnowPS.dll') in project configuration 'Release|Win32'. This may cause your project to build incorrectly. To correct this, please make sure that $(TargetPath) property value matches the value specified in %(Link.OutputFile).">
+</Event><Event ErrorLevel="0" Project="GlacialSnowPS" Source="GlacialSnow\GlacialSnowPS.vcproj" Description="Done converting to new project file 'E:\SHY\GlacialSnow_dll\GlacialSnow\GlacialSnowPS.vcxproj'.">
+</Event><Event ErrorLevel="3" Project="GlacialSnowPS" Source="GlacialSnow\GlacialSnowPS.vcproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="" Source="GlacialSnow.sln" Description="成功转换解决方案">
+</Event><Event ErrorLevel="3" Project="" Source="GlacialSnow.sln" Description="Converted">
+</Event></UpgradeLog>

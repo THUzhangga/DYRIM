@@ -1,0 +1,38 @@
+// My.idl : 新安江模型 的 IDL 源
+//
+
+// 此文件将由 MIDL 工具处理以
+// 产生类型库(My.tlb)和封送处理代码。
+
+import "oaidl.idl";
+import "ocidl.idl";
+import "InterfaceStruct.idl";//王皓，不引用该行就不识别BSCode等结构体
+
+[
+	object,
+	uuid(B54F4697-CFE4-4A6B-86D5-897C26CC3662),
+	helpstring("IMy 接口"),
+	pointer_default(unique)
+]
+interface IMy : IUnknown{
+	[, helpstring("方法Initialize")] HRESULT Initialize([in] BSTR SRM, [in] FLOAT BasinArea, [in] struct XAJParameter XAJ, [in] BSTR sccd, [in] BSTR user, [in] BSTR password, [in] BSTR sid, [in] BSTR RainType, [in] LONG HourStart, [in] LONG NumofHours, [in] LONG TimeStep, [in] LONG Steps, [in] LONG StatusTime);
+	[, helpstring("方法Calc")] HRESULT Calc([in]BSTR SnowModelType,[in] struct BSCode mBSCode, [in] struct Para mPara, [in] FLOAT* pQin, [in] FLOAT* pWLM, [in] FLOAT* pWRM);
+	[, helpstring("方法Finalize")] HRESULT Finalize([in] BSTR SRM );
+};
+[
+	uuid(ED9FBBDB-45BA-4A44-97D3-35FC78DAF1CB),
+	version(1.0),
+	helpstring("新安江模型 1.0 类型库")
+]
+library 新安江模型Lib
+{
+	importlib("stdole2.tlb");
+	[
+		uuid(4C5338FF-E85A-49FC-930D-D3FCC6A1B6C2),
+		helpstring("My Class")
+	]
+	coclass My
+	{
+		[default] interface IMy;
+	};
+};

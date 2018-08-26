@@ -1,0 +1,242 @@
+//void SlaveProcess::NoBoyNoGirl(BSCode mBSCode)
+//{
+//	int i=0;
+//	CString cSQL;
+//	_bstr_t SQL;
+//	for(i=0;i<RCCount;i++)
+//	{
+//		if(mBSCode.RegionIndex!=unsigned long long(RegionConnection[i].RegionIndex/100))
+//			continue;
+//		if(mBSCode.Length!=RegionConnection[i].Length)
+//			continue;
+//		if(mBSCode.Value!=RegionConnection[i].Value)
+//			continue;
+//		break;
+//	}
+//
+//	if(i==RCCount)//不是连接段，去discharge里找上游数据，因为分任务产生的分离
+//	{
+//		//下面是一个“分组”统计
+//		cSQL.Format("Select sum(QOutput) as Q, case when sum(Qoutput)=0 then 0 else sum(Soutput*Qoutput)/sum(Qoutput) end as S from discharge where RegionIndex=%I64u and BSValue in (%I64u,%I64u) and BSLength=%d and houroffset>=%d and houroffset<%d group by houroffset,minuteoffset order by houroffset,minuteoffset",\
+//			mBSCode.RegionIndex,mBSCode.Value<<1,(mBSCode.Value<<1)+(unsigned long long)1,mBSCode.Length+1,SParameter.HourStart,SParameter.HourStart+SParameter.NumofHours);
+//		SQL=cSQL.GetString();
+//		pRstQ->Open(SQL,(ADODB::_Connection*)pCnn,ADODB::adOpenForwardOnly,ADODB::adLockOptimistic,ADODB::adCmdText);
+//
+//		if(pRstQ->EndOfFile)
+//		{
+//			ZeroFill(pQUpRegion,Steps+1);
+//			ZeroFill(pSUpRegion,Steps+1);
+//		}
+//		else
+//		{
+//			pRstQ->MoveFirst();
+//			//如果读取的Q和S为空，则赋值为0
+//			for(long j=0;j<Steps;j++)
+//			{
+//				if(pRstQ->EndOfFile)
+//					cout<<"When Calculating "<<mBSCode.Length<<"----"<<mBSCode.Value<<", Data Count Error!"<<endl;
+//				vtmp=pRstQ->Fields->Item["Q"]->Value;
+//				pQUpRegion[j]=(vtmp.vt==VT_NULL?0:pRstQ->Fields->Item["Q"]->Value);//msdn上的解释“指示空值（类似于 SQL 中的空值）”
+//				vtmp=pRstQ->Fields->Item["S"]->Value;
+//				pSUpRegion[j]=(vtmp.vt==VT_NULL?0:pRstQ->Fields->Item["S"]->Value);
+//
+//				pRstQ->MoveNext();
+//			}//end for
+//		}//end else
+//		pRstQ->Close();
+//	}//end if
+//
+//	else//是连接段，去上一个region里找，只有一个子节点
+//	{
+//		//后面给的是0,1,所以BSValue不用%I64u,用%d即出正确结果，不然还得声明0为ull
+//		cSQL.Format("Select QOutput as Q,Soutput as S from discharge where RegionIndex=%I64u and BSValue=%d and BSLength=%d and houroffset>=%d and houroffset<%d order by houroffset,minuteoffset",RegionConnection[i].RegionIndex,0,1,SParameter.HourStart,SParameter.HourStart+SParameter.NumofHours);//20051111截止，明d继续。//嗯，辛苦，好好休息下，三年后我们在这行源代码相遇。
+//		SQL=cSQL.GetString();
+//		pRstQ->Open(SQL,(ADODB::_Connection*)pCnn,ADODB::adOpenForwardOnly,ADODB::adLockOptimistic,ADODB::adCmdText);
+//
+//		//数据个数不对的警告
+//		if(pRstQ->EndOfFile)
+//		{
+//			//处理不存在的，ZeroFill
+//			ZeroFill(pQin[Girl],Steps+1);
+//			cout<<"Get Qin from DB is zerofilled because of NODATA."<<endl;
+//			cout<<cSQL<<endl;
+//		}
+//		else
+//		{
+//			pRstQ->MoveFirst();
+//			for(int j=0;j<Steps;j++)
+//			{
+//				if(pRstQ->EndOfFile)
+//					cout<<"When Calculating "<<mBSCode.Length<<"----"<<mBSCode.Value<<", Data Count Error!"<<endl;
+//				vtmp=pRstQ->Fields->Item["Q"]->Value;
+//				pQUpRegion[j]=(vtmp.vt==VT_NULL?0:pRstQ->Fields->Item["Q"]->Value);
+//				vtmp=pRstQ->Fields->Item["S"]->Value;
+//				pSUpRegion[j]=(vtmp.vt==VT_NULL?0:pRstQ->Fields->Item["S"]->Value);
+//
+//				pRstQ->MoveNext();
+//			}//end for
+//		}//end else
+//		pRstQ->Close();
+//	}//end else
+//}
+
+
+
+////注释同上
+//void SlaveProcess::NoBoyButGirl(BSCode mBSCode)
+//{
+//	CString cSQL;
+//	_bstr_t SQL;
+//	cSQL.Format("Select QOutput as Q,Soutput as S from discharge where RegionIndex=%I64u and BSValue=%I64u and BSLength=%d and houroffset>=%d and houroffset<%d order by houroffset,minuteoffset",\
+//		mBSCode.RegionIndex,mBSCode.Value<<1,mBSCode.Length+1,SParameter.HourStart,SParameter.HourStart+SParameter.NumofHours);
+//	SQL=cSQL.GetString();
+//	try
+//	{
+//		pRstQ->Open(SQL,(ADODB::_Connection*)pCnn,ADODB::adOpenForwardOnly,ADODB::adLockOptimistic,ADODB::adCmdText);
+//
+//		if(pRstQ->EndOfFile)
+//		{
+//			ZeroFill(pQUpRegion,Steps+1);
+//			ZeroFill(pSUpRegion,Steps+1);
+//		}
+//		else
+//		{
+//			pRstQ->MoveFirst();
+//			for(int j=0;j<Steps;j++)
+//			{
+//				if(pRstQ->EndOfFile)
+//					cout<<"When Calculating "<<mBSCode.Length<<"----"<<mBSCode.Value<<", Data Count Error!"<<endl;
+//				vtmp=pRstQ->Fields->Item["Q"]->Value;
+//				pQUpRegion[j]=(vtmp.vt==VT_NULL?0:pRstQ->Fields->Item["Q"]->Value);
+//				vtmp=pRstQ->Fields->Item["S"]->Value;
+//				pSUpRegion[j]=(vtmp.vt==VT_NULL?0:pRstQ->Fields->Item["S"]->Value);
+//
+//				pRstQ->MoveNext();
+//			}
+//		}
+//
+//		pRstQ->Close();
+//	}
+//	catch(_com_error e)
+//	{
+//		CATCH_ERROR;
+//		cout<<"Error While Fetch QBoy on Rank "<<rank<<endl<<"RegionIndex="<<mBSCode.RegionIndex<<"\tBSValue="<<mBSCode.Value<<"\tBSLength="<<mBSCode.Length<<endl;
+//		cout<<"SQL="<<cSQL<<endl;
+//		exit(0);
+//	}
+//}
+//
+////注释同上
+//void SlaveProcess::NoGirlButBoy(BSCode mBSCode)
+//{
+//	CString cSQL;
+//	_bstr_t SQL;
+//	cSQL.Format("Select QOutput as Q,Soutput as S from discharge where RegionIndex=%I64u and BSValue=%I64u and BSLength=%d and houroffset>=%d and houroffset<%d order by houroffset,minuteoffset",\
+//		mBSCode.RegionIndex,(mBSCode.Value<<1)+1,mBSCode.Length+1,SParameter.HourStart,SParameter.HourStart+SParameter.NumofHours);
+//	SQL=cSQL.GetString();
+//	try
+//	{
+//		pRstQ->Open(SQL,(ADODB::_Connection*)pCnn,ADODB::adOpenForwardOnly,ADODB::adLockOptimistic,ADODB::adCmdText);
+//
+//		if(pRstQ->EndOfFile)
+//		{
+//			ZeroFill(pQUpRegion,Steps+1);
+//			ZeroFill(pSUpRegion,Steps+1);
+//		}
+//		else
+//		{
+//			pRstQ->MoveFirst();
+//			for(int j=0;j<Steps;j++)
+//			{
+//				if(pRstQ->EndOfFile)
+//					cout<<"When Calculating "<<mBSCode.Value<<","<<mBSCode.Length<<", Data Count Error! j="<<j<<"\tSteps="<<Steps<<endl;
+//				vtmp=pRstQ->Fields->Item["Q"]->Value;
+//				pQUpRegion[j]=(vtmp.vt==VT_NULL?0:pRstQ->Fields->Item["Q"]->Value);
+//				vtmp=pRstQ->Fields->Item["S"]->Value;
+//				pSUpRegion[j]=(vtmp.vt==VT_NULL?0:pRstQ->Fields->Item["S"]->Value);
+//
+//				pRstQ->MoveNext();
+//			}
+//		}
+//
+//		pRstQ->Close();
+//	}
+//	catch(_com_error e)
+//	{
+//		CATCH_ERROR;
+//		cout<<"Error While Fetch QGirl on Rank "<<rank<<endl<<"RegionIndex="<<mBSCode.RegionIndex<<"\tBSValue="<<mBSCode.Value<<"\tBSLength="<<mBSCode.Length<<endl;
+//		cout<<"SQL="<<cSQL<<endl;
+//		exit(0);
+//	}
+//}
+
+
+
+/****************************确定岩石水补充土壤水的流线角****************************/
+	//左坡面和源坡面为直线的倾斜角，右坡面为倾斜角的补角
+	U[1]=max((*fv)[N-1].hdown,Bchannel.H);
+	W[1]=Rock.H;
+	
+	//找到W的横坐标，因为U[1]的确定依赖于W坐标
+	int NUM=0;//把MK分成几份。
+	for(int i=N-1;i>=0;i--)
+	{
+		NUM++;
+		if(i==0 && (*fv)[i].hdown<=W[1])
+		{
+			W[0]=(*fv)[i].x;
+			break;
+		}
+		if((*fv)[i].hdown<=W[1] && (*fv)[i-1].hdown>W[1])
+		{
+			W[0]=(*fv)[i].x;
+			break;
+		}
+	}
+	//找到U[1]的准确值，主要受回归流影响
+	for(int i=N-1;i>=0;i--)
+	{
+		//没有回归流时，U的纵坐标即沟道地下水位
+		if((*fv)[i].hv<=1e-6)
+		{
+			break;
+		}
+
+		//有回归流的情况
+		if(i==0 && (*fv)[i].hv>1e-6)
+		{
+			U[1]=W[1]+((*fv)[i].hup-W[1])/((*fv)[i].x-W[0])*(U[0]-W[0]);
+			break;
+		}
+
+		if((*fv)[i].hv>1e-6 && (*fv)[i-1].hv<=1e-6)
+		{
+			U[1]=W[1]+((*fv)[i].hup-W[1])/((*fv)[i].x-W[0])*(U[0]-W[0]);
+		    break;
+		}
+	}
+	//确定流线倾斜角
+	float lstart[2],lend[2];
+	lend[0]=U[0];
+	lend[1]=D[1]-(U[1]-D[1])/NUM/2;
+	for(int i=N-1;i>=N-NUM;i--)
+	{
+		lstart[0]=(*fv)[i].x;
+		lstart[1]=(*fv)[i].hdown;
+		lend[1]=lend[1]+(U[1]-D[1])/NUM;
+		
+		if(sType=="l" || sType=="s")
+		{
+			(*fv)[i].fai=atan2(lend[1]-lstart[1],lend[0]-lstart[0]);
+			if((*fv)[i].fai<0){ (*fv)[i].fai+=PI;}
+		}
+		else if(sType=="r")
+		{
+			(*fv)[i].fai=atan2(lend[1]-lstart[1],lend[0]-lstart[0]);
+			if((*fv)[i].fai<0){ (*fv)[i].fai+=PI;}
+
+			//右坡面取倾斜角的补角
+			(*fv)[i].fai=PI-(*fv)[i].fai;
+		}
+	}
+	/****************************确定岩石水补充土壤水的流线角****************************/

@@ -1,0 +1,1 @@
+﻿C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\Microsoft.CppCommon.targets(322,7): error MSB4094: “My.idl;InterfaceStruct.idl”对于“MIDL”任务的“Source”参数是无效值。不能将多个项传入“Microsoft.Build.Framework.ITaskItem”类型的参数。

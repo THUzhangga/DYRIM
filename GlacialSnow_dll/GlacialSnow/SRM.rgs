@@ -1,0 +1,27 @@
+HKCR
+{
+	GlacialSnow.SRM.1 = s 'SRM Class'
+	{
+		CLSID = s '{6CC60EA6-54D2-4170-90CB-7BD3D23AF27D}'
+	}
+	GlacialSnow.SRM = s 'SRM Class'
+	{
+		CLSID = s '{6CC60EA6-54D2-4170-90CB-7BD3D23AF27D}'
+		CurVer = s 'GlacialSnow.SRM.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {6CC60EA6-54D2-4170-90CB-7BD3D23AF27D} = s 'SRM Class'
+		{
+			ProgID = s 'GlacialSnow.SRM.1'
+			VersionIndependentProgID = s 'GlacialSnow.SRM'
+			ForceRemove 'Programmable'
+			InprocServer32 = s '%MODULE%'
+			{
+				val ThreadingModel = s 'Apartment'
+			}
+			val AppID = s '%APPID%'
+			'TypeLib' = s '{EE85C68C-79E4-4133-875F-CE88C3CF915D}'
+		}
+	}
+}

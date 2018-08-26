@@ -1,0 +1,665 @@
+#ifndef WATERINCHANNEL_H
+#define WATERINCHANNEL_H
+#include "functions.h"
+#include "FVMunit.h"
+#include "DataStruct.h"
+#pragma once
+
+//汇流模型，数值求解一维浅水方程，有限体积法激波捕捉ROE格式
+class WaterInChannel
+{
+public:
+	WaterInChannel(void);
+public:
+	~WaterInChannel(void);
+
+public:
+	
+	//仍是以GH为基准面的相对水头(河道所有断面的平均)
+	float H;
+	
+	//(TimeStart,TimeEnd)之间与沟道地下水交互量为w(m3)
+	float TimeEnd,W;
+
+private:
+	Para* mPara;
+
+	//河道梯形面积S(GEFH)
+	float gh,gm,ef,theta1,theta2,ST;
+
+	//AreaS:源坡面面积,Length:河道长度,SlopeA:河道坡度（度数）,SlopeLA:左坡面坡度（度数）,SlopeRA:右坡面坡度（度数）
+	float AreaS,Length,SlopeA,SlopeLA,SlopeRA;
+
+	float *Qu1,*Qu2,*Quout,*FlowB,*FlowH,*FlowV;
+	
+	std::vector<FVMunit> *pL,*pR,*pS;
+
+	//采样频率,曼宁系数
+	float MSTEP,Manning;
+	
+	//最大绝对波速，用来确定空间步长
+	float maxC;
+
+	//固定的空间步长m
+	float dx;
+	
+	//采样步长数，空间步长数
+	int Steps,Xn;
+
+	bool SaveFlowPattern;
+
+
+
+private:
+	float *Q,*A,*Q2,*A2;
+	int Sign(float x);//符号函数
+
+public:
+	void Initiallize(float MSTEP0,int Steps0,float Manning0,float gh0,float gm0,float ef0,float theta10,float theta20,float Length0,float AreaS0,float SlopeA0,float SlopeLA0,float SlopeRA0,float* Qu10,float* Qu20,float* Quout0,vector<FVMunit>* pL0,vector<FVMunit>* pR0,vector<FVMunit>* pS0,float* FlowB0,float* FlowH0,float* FlowV0,bool SaveFlowPattern0);
+	void InChannel(float dt1);
+
+};
+
+#endif
+
+
+
+
+
+#include "WaterInChannel.h"
+#include "HighSlopeRunoff.h"
+
+//河道默认空间步长100米
+WaterInChannel::WaterInChannel(void)
+:maxC(0),dx(100),W(0),H(0)
+{
+}
+
+WaterInChannel::~WaterInChannel(void)
+{
+	/*delete[] Q;
+	delete[] A;
+	delete[] Q2;
+	delete[] A2;*/
+}
+
+//当前河段计算始末只初始化一次
+void WaterInChannel::Initiallize(Para* mPara, float MSTEP0,int Steps0,float Manning0,float gh0,float gm0,float ef0,float theta10,float theta20,float Length0,float AreaS0,float SlopeA0,float SlopeLA0,float SlopeRA0,float* Qu10,float* Qu20,float* Quout0,vector<FVMunit>* pL0,vector<FVMunit>* pR0,vector<FVMunit>* pS0,float* FlowB0,float* FlowH0,float* FlowV0,bool SaveFlowPattern0)
+{
+	gh=gh0;
+	gm=gm0;
+	ef=ef0; 
+	MSTEP=MSTEP0;
+	Steps=Steps0;
+	Manning=Manning0;
+
+	theta1=theta10;
+	theta2=theta20;
+
+	Length=Length0;
+	AreaS=AreaS0;
+	SlopeA=SlopeA0; 
+	SlopeLA=SlopeLA0; 
+	SlopeRA=SlopeRA0;
+	Qu1=Qu10;
+	Qu2=Qu20;         
+	Quout=Quout0;
+
+	FlowB=FlowB0;
+	FlowH=FlowH0;
+	FlowV=FlowV0;
+
+	pL=pL0;
+	pR=pR0;
+	pS=pS0;
+
+	SaveFlowPattern=SaveFlowPattern0;
+	
+	H=-gm;
+	ST=(gh+ef)*gm/2;
+
+	//以下被注销的部分在Roe格式中使用
+	////河道的空间步长数
+	//Xn=max(1,int(Length/dx+0.5));
+	//dx=Length/Xn;
+
+	//Q=new float[Xn];
+	//A=new float[Xn]; 
+
+	//Q2=new float[Xn];
+	//A2=new float[Xn];
+
+	////给一个小值，避免下面计算时分母为0的情况
+	//for(int i=0;i<Xn;i++)
+	//{
+	//	Q[i]=1e-10;
+	//	A[i]=1e-7;
+	//}
+}
+
+		
+////有限体积的ROE格式（高分辨率激波捕捉，时空二阶精度），以Q和A为变量
+//void WaterInChannel::InChannel(float dt1)
+//{
+//	//N1,N2:写入Qout的第几项
+//	int N1=0,N2=0;
+//
+//	//dt:时间步长,leftTime:剩余计算时间,Time:当前时间
+//	float dt=dt1,leftTime=dt1,Time=FVMunit::TimeStart;
+//	const float TimeStart=FVMunit::TimeStart;
+//	
+//	//质量守恒方程的源汇项m2/s
+//	float q=0;
+//
+//	//当前时刻有限体积单元两侧的边界值
+//	//第0个元素对应左边界，第1个元素对应右边界,每个边界都对应一个QL,QR,AL,AR
+//	float QL[2],QR[2],AL[2],AR[2],BL[2],BR[2];
+//	
+//	//左右边界的波速,水速,水面宽等
+//	float c[2],u[2],B[2],alfa1[2],alfa2[2],beta1[2],beta2[2],gama1[2],gama2[2];
+//
+//	//r:通量限制器的自变量,fr:通量限制器的值,a:边界过水面积,P:边界湿周,K:边界摩阻源项用到的谢才公式系数
+//	float r,fr,a,P,K;
+//
+//	//边界通量及源汇项通量
+//	float FQ[2],FA[2],SQ[2],SA[2];
+//
+//	//时间层循环
+//	while(leftTime>0)
+//	{
+//		//dt=10;
+//		//空间步长一定，确定时间步长
+//		/*if(maxC>=30)
+//		{
+//			cout<<"warning:maxC="<<maxC<<"m/s,impossible?"<<endl;
+//		}*/
+//
+//		//这里限制一下maxC，是因为如果接触maxC很大，比如无穷大，那么时间步长就无限小，程序死循环
+//		/*if(maxC*leftTime>dx && maxC<30)
+//		{
+//			dt=0.60*dx/maxC;
+//		}*/
+//
+//		leftTime-=dt;
+//		Time+=dt;
+//		
+//		//cout<<"lefttime:"<<leftTime<<",dt:"<<dt<<endl;
+//
+//		//上边界条件
+//		if(AreaS<1e-2)
+//		{
+//			//不是源坡面
+//			Q[0]=Qu1[min(int(Time/MSTEP),Steps)]+Qu2[min(int(Time/MSTEP),Steps)];
+//		}
+//		else
+//		{
+//			//源河段没有上游来流
+//			Q[0]=(*pS)[pS->size()-1].qs*(*pS)[pS->size()-1].Width;
+//		}
+//
+//		if(Time<this->TimeEnd)
+//		{
+//			//沟道地下水(或者说是饱和土壤水)对明渠水的补给(m2/s)
+//			q=W/(TimeEnd-TimeStart)/Length;
+//
+//			if(q>5)
+//			{
+//				int x=0;
+//			}
+//		}
+//
+//		//左右表层坡面对明渠的补给
+//		q=q+(*pL)[pL->size()-1].qs+(*pR)[pR->size()-1].qs;
+//
+//		//空间层循环
+//		for(int i=0;i<Xn;i++)
+//		{
+//			//*注：Xn-1个有限单元，Xn个边界，每个边界处都对应着一个L变量和R变量，也就是说用到的L和R是对应着同一个边界的，而不是有限单元的左边界和右边界
+//			
+//			/***********************************************计算XL[0]和XR[0]***********************************************/
+//			//*注：QL[0],QR[0]等对应着i-1/2处，QL[1],QR[1]对应着i+1/2处
+//			
+//			if(i==0)
+//			{
+//				////因为用到了i-2点，所以i==0和1要特殊判断
+//				//if(i<=1)
+//				//{
+//					QL[0]=max(Q[0],1e-10);
+//					AL[0]=max(A[0],1e-7);
+//				//}
+//
+//				////中间普通节点
+//				//else
+//				//{
+//				//	//为了避免r分母为0，加上了1e-8
+//				//	//这个实际是r(i-1)
+//				//	r=(Q[i]-Q[i-1]+1e-8)/(Q[i-1]-Q[i-2]+1e-8);
+//
+//				//	//Van Albada通量限制器
+//				//	fr=(pow(r,2)+r)/(1+pow(r,2));
+//
+//				//	QL[0]=Q[i-1]+0.5*fr*(Q[i-1]-Q[i-2]);
+//
+//				//	r=(A[i]-A[i-1]+1e-8)/(A[i-1]-A[i-2]+1e-8);
+//				//	fr=(pow(r,2)+r)/(1+pow(r,2));
+//				//	AL[0]=A[i-1]+0.5*fr*(A[i-1]-A[i-2]);
+//				//}
+//
+//				//因为用到了i-1点，所以要特殊判断
+//				//if(i==0)
+//				//{
+//					QR[0]=max(Q[0],1e-10);
+//					AR[0]=max(A[0],1e-7);
+//				//}
+//				////因为用到了i+1点，所以要特殊判断
+//				//else if(i==Xn-1)
+//				//{
+//				//	QR[0]=Q[Xn-1];
+//				//	AR[0]=A[Xn-1];
+//				//}
+//				//else
+//				//{
+//				//	//为了避免r分母为0，加上了1e-8
+//				//	//这个实际是1/r(i)
+//				//	r=(Q[i]-Q[i-1]+1e-8)/(Q[i+1]-Q[i]+1e-8);
+//
+//				//	//Van Albada通量限制器
+//				//	fr=(pow(r,2)+r)/(1+pow(r,2));
+//
+//				//	QR[0]=Q[i]-0.5*fr*(Q[i+1]-Q[i]);
+//
+//				//	r=(A[i]-A[i-1]+1e-8)/(A[i+1]-A[i]+1e-8);
+//
+//				//	//Van Albada通量限制器
+//				//	fr=(pow(r,2)+r)/(1+pow(r,2));
+//
+//				//	AR[0]=A[i]-0.5*fr*(A[i+1]-A[i]);
+//				//}
+//				/***********************************************计算XL[0]和XR[0]***********************************************/
+//
+//				/************************************************计算辅助参数值************************************************/
+//				//计算水面宽，体现断面形状的地方
+//				if(AL[0]<=ST)
+//				{
+//					BL[0]=sqrt(2*max(AL[0],1e-7)*(1/tan(theta1)+1/tan(theta2))+pow(ef,2));
+//				}
+//				else
+//				{
+//					BL[0]=sqrt(2*(AL[0]-ST)*(1/tan(SlopeLA)+1/tan(SlopeRA))+pow(gh,2));//图中RS长度
+//				}
+//
+//				if(AR[0]<=ST)
+//				{
+//					BR[0]=sqrt(2*max(AR[0],1e-7)*(1/tan(theta1)+1/tan(theta2))+pow(ef,2));
+//				}
+//				else
+//				{
+//					BR[0]=sqrt(2*(AR[0]-ST)*(1/tan(SlopeLA)+1/tan(SlopeRA))+pow(gh,2));
+//				}
+//
+//				
+//				if(A[0]>1e-1)
+//				{
+//					u[0]=(sqrt(AL[0])*AR[0]*QL[0]+sqrt(AR[0])*AL[0]*QR[0]+1e-8)/(AL[0]*AR[0]*(sqrt(AL[0])+sqrt(AR[0]))+1e-8);
+//					c[0]=sqrt(9.8*cos(SlopeA)/2*(AL[0]/BL[0]+AR[0]/BR[0]));
+//				}
+//				else
+//				{
+//					c[0]=u[0]=1e-5;
+//				}
+//				
+//				//下面的B[0]是边界处的水面宽取值，根据静水平衡条件，从表达式形式可以发现，类似于B=dA/dh
+//				//B[0]=((AR[0]-AL[0])*c[0]+q*dx)/c[0]/tan(SlopeA)/dx;
+//				B[0]=(BL[0]+BR[0])/2;
+//
+//				//界面处过水断面面积
+//				a=0.5*(AL[0]/BL[0]+AR[0]/BR[0])*B[0];
+//
+//				//计算界面处湿周
+//				if(AL[0]<=ST)
+//				{
+//					P=2*a/(ef+B[0])*(1/sin(theta1)+1/sin(theta2))+ef;
+//				}
+//				else
+//				{
+//					P=2*(a-ST)/(gh+B[0])*(1/sin(SlopeLA)+1/sin(SlopeRA))+gm*(1/sin(theta1)+1/sin(theta2))+ef;
+//				}
+//
+//				//0都代表是左界面的值，1代表右界面的值
+//				K=pow(a,5/3)/Manning/pow(P,2/3);
+//				alfa1[0]=(QR[0]-QL[0]+(c[0]-u[0])*(AR[0]-AL[0]))/2/c[0];
+//				alfa2[0]=AR[0]-AL[0]-alfa1[0];
+//				gama1[0]=-pow(c[0],3)*(BR[0]-BL[0])/4/9.8/cos(SlopeA);
+//				gama2[0]=-gama1[0];
+//
+//				//这里认为Q^=A^*u^,q^=q
+//				beta1[0]=gama1[0]+B[0]*c[0]*tan(SlopeA)*dx/2-9.8*a*a*u[0]*abs(a*u[0])*dx/2/c[0]/pow(K,2)-q*dx*(u[0]-c[0])/2/c[0];
+//				beta2[0]=q*dx-beta1[0];
+//
+//			}//end if(i==0)
+//			/************************************************计算辅助参数值************************************************/
+//
+//			/***********************************************计算XL[1]和XR[1]***********************************************/
+//			//注:下面对应的是i+1/2边界处
+//			
+//			//因为r用到了i-1节点，所以要特殊判断
+//			if(i==0)
+//			{
+//				QL[1]=Q[0];
+//				AL[1]=A[0];
+//			}
+//
+//			//因为r用到了i+1节点，所以要特殊判断
+//			else if(i==Xn-1)
+//			{
+//				QL[1]=Q[Xn-1];
+//				AL[1]=A[Xn-1];
+//			}
+//
+//			//中间普通节点
+//			else
+//			{
+//				//对应r(i)
+//				r=(Q[i+1]-Q[i]+1e-8)/(Q[i]-Q[i-1]+1e-8);
+//				fr=(pow(r,2)+r)/(1+pow(r,2));
+//				QL[1]=Q[i]+0.5*fr*(Q[i]-Q[i-1]);
+//
+//				if(QL[1]<-1 || QL[1]>1e4)
+//				{
+//					cout<<"i:"<<i<<","<<Q[i-1]<<","<<Q[i]<<","<<Q[i+1]<<endl;
+//					int x=0;
+//				}
+//
+//				r=(A[i+1]-A[i]+1e-8)/(A[i]-A[i-1]+1e-8);
+//				fr=(pow(r,2)+r)/(1+pow(r,2));
+//				AL[1]=A[i]+0.5*fr*(A[i]-A[i-1]);
+//
+//				if(AL[1]<-1 || AL[1]>1e4)
+//				{
+//					cout<<"i:"<<i<<","<<A[i-1]<<","<<A[i]<<","<<A[i+1]<<endl;
+//					int x=0;
+//				}
+//			}
+//			
+//			//处理最后两个节点右边界的QR和AR，因为出现了i+2，所以对最后两个节点要特殊判断
+//			if(i>=Xn-2)
+//			{
+//				QR[1]=max(Q[Xn-1],1e-6);
+//				AR[1]=max(A[Xn-1],1e-6);
+//			}
+//			else
+//			{
+//				//对应1/r(i+1)
+//				r=(Q[i+1]-Q[i]+1e-8)/(Q[i+2]-Q[i+1]+1e-8);
+//				fr=(pow(r,2)+r)/(1+pow(r,2));
+//				QR[1]=Q[i+1]-0.5*fr*(Q[i+2]-Q[i+1]);
+//
+//				if(QR[1]<-1 || QR[1]>1e4)
+//				{
+//					cout<<"i:"<<i<<","<<Q[i]<<","<<Q[i+1]<<","<<Q[i+2]<<endl;
+//					int x=0;
+//				}
+//
+//				r=(A[i+1]-A[i]+1e-8)/(A[i+2]-A[i+1]+1e-8);
+//				fr=(pow(r,2)+r)/(1+pow(r,2));
+//				AR[1]=A[i+1]-0.5*fr*(A[i+2]-A[i+1]);
+//
+//				if(AR[1]<-1 || AR[1]>1e4)
+//				{
+//					cout<<"i:"<<i<<","<<A[i]<<","<<A[i+1]<<","<<A[i+2]<<endl;
+//					int x=0;
+//				}
+//			}
+//			/***********************************************计算XL[1]和XR[1]***********************************************/
+//			
+//			/************************************************计算辅助参数值************************************************/
+//			//计算水面宽，体现断面形状的地方
+//			if(AL[1]<=ST)
+//			{
+//				BL[1]=sqrt(2*max(AL[1],1e-7)*(1/tan(theta1)+1/tan(theta2))+pow(ef,2));
+//			}
+//			else
+//			{
+//				BL[1]=sqrt(2*(AL[1]-ST)*(1/tan(SlopeLA)+1/tan(SlopeRA))+pow(gh,2));//图中RS长度
+//			}
+//
+//			if(AR[1]<=ST)
+//			{
+//				BR[1]=sqrt(2*max(AR[1],1e-7)*(1/tan(theta1)+1/tan(theta2))+pow(ef,2));
+//			}
+//			else
+//			{
+//				BR[1]=sqrt(2*(AR[1]-ST)*(1/tan(SlopeLA)+1/tan(SlopeRA))+pow(gh,2));
+//			}
+//
+//			//界面参变量值
+//
+//			//注：发现流速很难控制！
+//			if(AR[1]>1e-1 && AL[1]>1e-1)
+//			{
+//				u[1]=(sqrt(abs(AL[1]))*AR[1]*QL[1]+sqrt(abs(AR[1]))*AL[1]*QR[1])/(AL[1]*AR[1]*(sqrt(abs(AL[1]))+sqrt(abs(AR[1]))));
+//				c[1]=sqrt(abs(9.8*cos(SlopeA)/2*(AL[1]/BL[1]+AR[1]/BR[1])));
+//			}
+//			else
+//			{
+//				c[1]=u[1]=1e-5;
+//			}
+//			
+//			if(u[1]>10)
+//			{
+//				int u1,u2;
+//				u1=QL[1]/AL[1];
+//				u2=QR[1]/AR[1];
+//				cout<<"u1:"<<u1<<",u2:"<<u2<<endl;
+//			}
+//
+//		
+//			//B[1]=(abs(AR[1]-AL[1])*c[1]+q*dx)/c[1]/tan(SlopeA)/dx;
+//			B[1]=(BL[1]+BR[1])/2;
+//
+//			//界面处过水断面面积
+//			a=0.5*(AL[1]/BL[1]+AR[1]/BR[1])*B[1];
+//
+//			//计算界面处湿周
+//			if(AL[1]<=ST)
+//			{
+//				P=2*a/(ef+B[1])*(1/sin(theta1)+1/sin(theta2))+ef;
+//			}
+//			else
+//			{
+//				P=2*(a-ST)/(gh+B[1])*(1/sin(SlopeLA)+1/sin(SlopeRA))+gm*(1/sin(theta1)+1/sin(theta2))+ef;
+//			}
+//
+//			K=pow(a,5/3)/Manning/pow(P,2/3);
+//			alfa1[1]=(QR[1]-QL[1]+(c[1]-u[1])*(AR[1]-AL[1]))/2/c[1];//量纲：m2
+//			alfa2[1]=AR[1]-AL[1]-alfa1[1];
+//			gama1[1]=-pow(c[1],3)*(BR[1]-BL[1])/4/9.8/cos(SlopeA);//量纲：m3/s
+//			gama2[1]=-gama1[1];
+//			beta1[1]=gama1[1]+B[1]*c[1]*tan(SlopeA)*dx/2-9.8*a*a*u[1]*abs(a*u[1])*dx/2/c[1]/pow(K,2)-q*dx*(u[1]-c[1])/2/c[1];//量纲：m3/s
+//			beta2[1]=q*dx-beta1[1];
+//			/************************************************计算辅助参数值************************************************/
+//			
+//			/**********************************************计算左右界面通量值**********************************************/
+//			//左界面通量"F(i-1/2)+","S(i-1/2)+"
+//			//被注释掉的FA[0]和FQ[0]与被采用的完全等价，只是代入了gama1和gama2之间的关系
+//
+//			//FA[0]=alfa1[0]*(u[0]+c[0]+abs(u[0]+c[0]))+alfa2[0]*(u[0]-c[0]+abs(u[0]-c[0]))+0.5*(gama1[0]+gama2[0])*(1+Sign(u[0]+c[0]));
+//			FA[0]=alfa1[0]*(u[0]+c[0]+abs(u[0]+c[0]))+alfa2[0]*(u[0]-c[0]+abs(u[0]-c[0]));
+//
+//			//FQ[0]=alfa1[0]*(u[0]+c[0])*(u[0]+c[0]+abs(u[0]+c[0]))+alfa2[0]*(u[0]-c[0])*(u[0]-c[0]+abs(u[0]-c[0]))+0.5*(gama1[0]*(u[0]+c[0])+gama2[0]*(u[0]-c[0]))*(1+Sign(u[0]-c[0]));
+//			FQ[0]=alfa1[0]*(u[0]+c[0])*(u[0]+c[0]+abs(u[0]+c[0]))+alfa2[0]*(u[0]-c[0])*(u[0]-c[0]+abs(u[0]-c[0]))+gama1[0]*c[0]*(1+Sign(u[0]-c[0]));
+//
+//			SA[0]=0.5*(beta1[0]*(1+Sign(u[0]+c[0]))+beta2[0]*(1+Sign(u[0]-c[0])));
+//			SQ[0]=0.5*(beta1[0]*(u[0]+c[0])*(1+Sign(u[0]+c[0]))+beta2[0]*(u[0]-c[0])*(1+Sign(u[0]-c[0])));
+//
+//			//右界面通量"F(i+1/2)-","S(i+1/2)-"
+//			//被注释掉的FA[1]和FQ[1]与被采用的完全等价，只是代入了gama1和gama2之间的关系
+//
+//			//FA[1]=alfa1[1]*(u[1]+c[1]-abs(u[1]+c[1]))+alfa2[1]*(u[1]-c[1]-abs(u[1]-c[1]))+0.5*(gama1[1]+gama2[1])*(1-Sign(u[1]+c[1]));
+//			FA[1]=alfa1[1]*(u[1]+c[1]-abs(u[1]+c[1]))+alfa2[1]*(u[1]-c[1]-abs(u[1]-c[1]));
+//
+//			//FQ[1]=alfa1[1]*(u[1]+c[1])*(u[1]+c[1]-abs(u[1]+c[1]))+alfa2[1]*(u[1]-c[1])*(u[1]-c[1]-abs(u[1]-c[1]))+0.5*(gama1[1]*(u[1]+c[1])+gama2[1]*(u[1]-c[1]))*(1-Sign(u[1]-c[1]));
+//			FQ[1]=alfa1[1]*(u[1]+c[1])*(u[1]+c[1]-abs(u[1]+c[1]))+alfa2[1]*(u[1]-c[1])*(u[1]-c[1]-abs(u[1]-c[1]))+gama1[1]*c[1]*(1-Sign(u[1]-c[1]));
+//
+//			SA[1]=0.5*(beta1[1]*(1-Sign(u[1]+c[1]))+beta2[1]*(1-Sign(u[1]-c[1])));
+//			SQ[1]=0.5*(beta1[1]*(u[1]+c[1])*(1-Sign(u[1]+c[1]))+beta2[1]*(u[1]-c[1])*(1-Sign(u[1]-c[1])));
+//			/**********************************************计算左右界面通量值**********************************************/
+//			
+//			/**********************************************得到下一时刻的变量**********************************************/
+//			//注意：写到A2和Q2里面
+//			A2[i]=A[i]-(FA[0]+FA[1]-SA[0]-SA[1])*dt/dx;
+//			Q2[i]=Q[i]-(FQ[0]+FQ[1]-SQ[0]-SQ[1])*dt/dx;
+//
+//			if(Q2[i]>1e1 || A2[i]>1e1 || Q2[i]<-1e1 || A2[i]<-1e1)
+//			{
+//				cout<<endl<<"********************"<<endl;
+//				cout<<"maxC:"<<maxC<<",dt:"<<dt<<",A:"<<A2[i]<<",Q:"<<Q2[i];
+//				cout<<endl<<"********************"<<endl;
+// 				int x=0;
+//			}
+//
+//			/*if(Q2[i]>1e5 || A2[i]>1e5 || Q2[i]<-1e5 || A2[i]<-1e5)
+//			{
+//				cout<<endl<<"********************"<<endl;
+//				cout<<"maxC:"<<maxC<<",dt:"<<dt<<",A:"<<A2[i]<<",Q:"<<Q2[i];
+//				cout<<endl<<"********************"<<endl;
+//				int x=0;
+//			}*/
+//
+//			//强制赋值可能会引起数值稳定性
+//			//if(A2[i]<1e-7 /*&& A2[i]>-10*/)  { A2[i]=1e-7;  }
+//			//if(Q2[i]<1e-10 /*&& Q[i]>-10*/)  { Q2[i]=1e-10; }
+//
+//			cout<<"A:"<<A2[i]<<",Q:"<<Q2[i]<<endl;
+//			if(i==Xn-1){ cout<<endl;}
+//			
+//			c[0]=c[1]; 
+//			u[0]=u[1]; 
+//			B[0]=B[1];
+//
+//			QL[0]=QL[1]; QR[0]=QR[1];
+//			AL[0]=AL[1]; AR[0]=AR[1];
+//			BL[0]=BL[1]; BR[0]=BR[1];
+//			
+//			alfa1[0]=alfa1[1]; alfa2[0]=alfa2[1];
+//			beta1[0]=beta1[1]; beta2[0]=beta2[1];
+//			gama1[0]=gama1[1]; gama2[0]=gama2[1];
+//			
+//	
+//			//存储到上下游河段间的接口变量中
+//			if(i==Xn-1)
+//			{
+//				N1=min(int((Time-dt)/MSTEP),Steps);
+//				N2=min(int(Time/MSTEP)+1,Steps);
+//				for(int n=N1;n<=N2;n++)
+//				{
+//					Quout[n]=Q[i];//元流域出口流量
+//
+//					if(Quout[n]>1e5 || Quout[n]<-10)
+//					{
+//						cout<<"Quout:"<<Quout[n]<<endl;
+//					}
+//					
+//					//在要求保存的时候再计算
+//					if(SaveFlowPattern)
+//					{
+//						if(A[i]>1e-5)
+//						{
+//							FlowV[n]=max(Q[i]/A[i],0);
+//						}
+//						else
+//						{
+//							FlowV[n]=0.0;
+//						}
+//
+//						if(A[i]<=ST)
+//						{
+//							FlowB[n]=sqrt(2*A[i]*(1/tan(theta1)+1/tan(theta2))+pow(ef,2));
+//							FlowH[n]=2*A[i]/(FlowB[n]+ef);
+//						}
+//						else
+//						{
+//							FlowB[n]=sqrt(2*(A[i]-ST)*(1/tan(SlopeLA)+1/tan(SlopeRA))+pow(gh,2));//图中RS长度
+//							FlowH[n]=gm+2*(A[i]-ST)/(FlowB[n]+gh);
+//						}
+//					}
+//				}
+//			}
+//
+//			
+//			//如果不对Q和A作限制，当Q和A都很小的时候，可能会出现maxC很大的情况，这时的时间步长dt就很小了。
+//			if(Q[i]>1e-3 && A[i]>1e-1)
+//			{
+//				//绝对波速，用来调整时间步长
+//				//当前水面宽B
+//				float B=1e-6;
+//
+//				//根据A的大小求水面宽B
+//				if(A[i]<=ST)
+//				{
+//					B=sqrt(2*max(A[i],1e-7)*(1/tan(theta1)+1/tan(theta2))+pow(ef,2));
+//				}
+//				else
+//				{
+//					B=sqrt(2*(A[i]-ST)*(1/tan(SlopeLA)+1/tan(SlopeRA))+pow(gh,2));//图中RS长度
+//				}
+//
+//				//求当前最大绝对波速
+//				if(A[i]<1e-5)
+//				{
+//					maxC=max(maxC,abs(Q[i]/A[i]));
+//				}
+//				else
+//				{
+//					maxC=max(maxC,abs(Q[i]/A[i]+sqrt(9.8*A[i]/B)));
+//				}
+//			}
+//
+//		}//end x
+//
+//		//用t+1时刻的值更新t时刻的值
+//		for(int k=0;k<Xn;k++)
+//		{
+//			Q[k]=Q2[k];
+//			A[k]=A2[k];
+//		}
+//
+//	}//end t
+//
+//	//更新相对水头H
+//	H=0;
+//	for(int i=0;i<Xn;i++)
+//	{
+//		if(A[i]<=ST)
+//		{
+//			H+=2*max(A[i],1e-6)/(sqrt(2*max(A[i],1e-6)*(1/tan(theta1)+1/tan(theta2))+pow(ef,2))+ef);
+//		}
+//		else
+//		{
+//			H+=gm+2*(max(A[i],1e-6)-ST)/(sqrt(2*(max(A[i],1e-6)-ST)*(1/tan(SlopeLA)+1/tan(SlopeRA))+pow(gh,2))+gh);
+//		}
+//	}
+//	H/=Xn;//平均水深
+//
+//	if(H>40 || H<1e-8)
+//	{
+//		int x=0;
+//	}
+//
+//	if(H<=-1e-4)
+//	{
+//		cout<<FVMunit::Year<<"."<<FVMunit::Month<<"."<<FVMunit::Day<<"."<<FVMunit::Hour<<",明渠负水深:"<<H<<endl;
+//		H=0;
+//	}
+//
+//	H-=gm;//平均水头
+//}
+
+//符号函数
+int WaterInChannel::Sign(float x)
+{
+	if(x>1e-4) return 1;
+	if(x<1e-4) return -1;
+	return 0;
+}
+
