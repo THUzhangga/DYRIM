@@ -14,7 +14,7 @@
 # Compiled Dynamic libraries
 *.so
 *.dylib
-*.dll
+# *.dll
 
 # Fortran module files
 *.mod
@@ -27,6 +27,13 @@
 *.lib
 
 # Executables
-*.exe
+# *.exe
 *.out
 *.app
+
+# add for visual studio projects
+*.ncb
+*.sln
+*.sdf
+*.pch
+*.pdb
