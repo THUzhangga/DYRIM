@@ -16,7 +16,6 @@ void main(int argc, char *argv[])
 
 	if(argc != 4)
 	{
-
 		cout<<"NewRouting.exe needs three commandline parameter: User,Password,sid \n\
 			   Program exiting now."<<endl;
 		exit(-1);

@@ -10,10 +10,10 @@
 
 #include "HighSlopeRunoff.h"
 //李铁键产流产沙模型dll组件调用
-#include "E:\models\WaterYield_dll20130915 for GDW\WaterYield\WaterYield.h"
-#include "E:\models\WaterYield_dll20130915 for GDW\WaterYield\WaterYield_i.c"
-#include "E:\models\XAJ_dll\新安江模型\新安江模型\My.h"
-#include "E:\models\XAJ_dll\新安江模型\新安江模型\My_i.c"
+#include "E:\models\DYRIM_raw\WaterYield_dll20130915 for GDW\WaterYield\WaterYield.h"
+#include "E:\models\DYRIM_raw\WaterYield_dll20130915 for GDW\WaterYield\WaterYield_i.c"
+#include "E:\models\DYRIM_raw\XAJ_dll\新安江模型\新安江模型\My.h"
+#include "E:\models\DYRIM_raw\XAJ_dll\新安江模型\新安江模型\My_i.c"
 
 CComQIPtr <IWaterBasin,&IID_IWaterBasin> spWaterBasin;//ltj水沙耦合模型
 CComQIPtr <IMy,&IID_IMy> spXAJmodel;//三水源新安江模型

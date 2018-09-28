@@ -166,6 +166,7 @@ void AVPM::Calc(void)
 
 		//20051218 李铁键 增加对本河段产沙上限的检验
 		//wh:SinL,SinR:上游两支流的来沙量
+		//20180901 张玍: 注意是含沙量而非绝对沙量
 		if(SinL[t]>gammaS*(1.0f-mPara.Sita1-mPara.Sita2)+gamma*(mPara.Sita1+mPara.Sita2))
 			SinL[t]=gammaS*(1.0f-mPara.Sita1-mPara.Sita2)+gamma*(mPara.Sita1+mPara.Sita2);
 		if(SinR[t]>gammaS*(1.0f-mPara.Sita1-mPara.Sita2)+gamma*(mPara.Sita1+mPara.Sita2))
@@ -219,7 +220,7 @@ void AVPM::Calc(void)
 	{
 		//wh解读：通过流速求波速，下面公式适用于三角形断面
 		MaxC=4.0f/3.0f*pow(m/(m*m+1),0.25f)*pow(S,0.375f)*pow(MaxQ,0.25f)/sqrt(2.0)/pow(n,0.75f);
-		xsteps=floor(L/MaxC/delta_t+0.5);
+		xsteps=floor(L/MaxC/delta_t+0.5);  
 		if(xsteps<1) xsteps=1;
 		
 			cout<<endl<<"=================================================="<<endl;
@@ -232,7 +233,7 @@ void AVPM::Calc(void)
 		
 	}
 	else
-		xsteps=1;
+		xsteps=1;                                    
 
 	//cout<<"xsteps is "<<xsteps<<endl;
 
@@ -278,11 +279,16 @@ void AVPM::Calc(void)
 		if(Q[0]<mPara.DrainingArea/1000000000*1 && n0<0.5  && mPara.DrainingArea>3000000000)
 			n=0.5-(0.5-n0)*Q[0]/1*1000000000/mPara.DrainingArea;
 		else
-			//20180317阻力分解
+			//20180317，杨飞阻力分解
 		{
 				float qsta;
 				qsta=(Q[0]+Qout[0])*0.5/(pow(n*(Q[0]+Qout[0])*0.5*1.5874f*pow(m*m+1.0f,0.33333333f)/pow(m,5.0f/3)/sqrt(S),0.375f)*2*m);
 				n=n0*pow(qsta,0.38)*pow(S,0.32)/0.61;
+				//20180928, 阻力分解后channelero和gravityero计算错误，检测分解后的阻力是否正确。如果小于0或为空，则抛出异常。
+				if (n < 0)
+				{
+					throw runtime_error("n is negative!");
+				}
 		}
 			//n=n0;
 
@@ -402,7 +408,7 @@ void AVPM::Calc(void)
 				B[3]=m*h[3]*2.0;
 
 				BAverage=4.0f*m*(Q[t-1]+Q[t]+Qout[t-1]+Qout[t])/3.0f/cAverage;
-				BAverage=sqrt(BAverage);
+				BAverage=sqrt(BAverage); 
 
 			}
 			else
@@ -478,6 +484,7 @@ void AVPM::Calc(void)
 
 
 			//iksila
+			//20180901 张玍：iksila对应公式中的epsilon
 			iksila=(1.0f-(Q_c[0]+Q_c[1]+Q_c[2]+Q_c[3])/4/BAverage/J/delta_x)/2;
 
 			C1=(K*iksila+0.5*delta_t)/(K*(1.0f-iksila)+0.5*delta_t);
